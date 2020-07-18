@@ -26,3 +26,9 @@ CREATE TABLE techcomments(
     comment Text
 );
 
+
+CREATE TABLE searchcomments(
+    id SERIAL PRIMARY KEY,
+    post INT,
+    comment Text
+);

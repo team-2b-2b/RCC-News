@@ -267,6 +267,47 @@ function Weather(day){
 //-----------------------------------------------------------------
 
 
+
+
+//---------------------------------search-------------------------------
+
+
+app.get('/searches',(req,res)=>{
+    res.render('pages/searches');
+})
+
+app.post('/tosearch',(req,res)=>{
+    // console.log(req.body.search);
+    let toSearch = req.body.search;
+    let NEWS_API= process.env.NEWS_API;
+    let url =`https://newsapi.org/v2/everything?q=${toSearch}&apiKey=${NEWS_API}`;
+    let searchArray = [];
+
+    superagent(url)
+    .then(result => {
+        searchArray = result.body.articles.map(item => {
+            return new Search(item);
+        })
+       
+             res.render('pages/searches', { searchData: searchArray});
+    })
+})
+
+function Search(data) {
+    this.title = data.title;
+    if (data.urlToImage) {
+        this.urlToImage = data.urlToImage;
+    } else { this.urlToImage = `https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR68KlBNlBfL6n8ujQTRzl6X0YBTIcmLhDXEQ&usqp=CAU`; }
+    this.description = data.description;
+    this.url = data.url;
+}
+
+//------------------------------------------------------------------------
+
+
+
+
+
 app.get('*', notFound);
 
 app.use(errors);
