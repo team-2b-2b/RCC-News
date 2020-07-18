@@ -236,6 +236,36 @@ function Sport(data) {
 }
 // ----------------------------------------------------------------
 
+//----------------------------ًWheather-----------------------------
+app.get('/weather', handlerOfWeather);
+function handlerOfWeather(request, response){
+    const lat = request.query.latitude;
+    const lon = request.query.longitude;
+    weatherInfo(lat, lon).then(weather =>{
+        // response.status(200).json(weather);
+        response.redirect('/');
+    });  
+}
+function weatherInfo(lat, lon){
+    let newWeather = [];
+    let key = process.env.WEATHERBIT_KEY;
+    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`;
+    return superagent.get(url).then(weather =>{
+        let status = weather.body.data;
+        return status;
+    }).then(weather =>{
+        newWeather = weather.map(element =>{
+            return new Weather(element);
+        })
+        return newWeather;
+    })
+}
+function Weather(day){
+    this.description = day.weather.description;
+    this.time = new Date(day.valid_date).toString().slice(0,15);
+}
+//-----------------------------------------------------------------
+
 
 app.get('*', notFound);
 
