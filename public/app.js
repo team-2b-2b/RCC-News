@@ -10,3 +10,5 @@ var a = [];
       $( txtbox ).val('');  
     })
   }
+
+  $('.hidden').hide();
