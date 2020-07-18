@@ -19,3 +19,10 @@ CREATE TABLE sportcomments(
     post INT,
     comment Text
 );
+
+CREATE TABLE techcomments(
+    id SERIAL PRIMARY KEY,
+    post INT,
+    comment Text
+);
+
