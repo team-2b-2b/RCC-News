@@ -90,7 +90,48 @@ function News(data) {
 
 
 // ------------------------------------Basma-----------------------
+app.post('/hcomments/:comnth_id', (req, res) => {
+    let postNum = req.params.comnth_id;
+    // console.log(postNum);
+    let SQL = `INSERT INTO healthcomments (post,comment) VALUES ($1,$2);`;
+    let values = [postNum,req.body.Ntext];
+    client.query(SQL, values)
+        .then(() => {
+            // let SQL2 = `SELECT * FROM comments`
+            // client.query(SQL2)
+            //     .then(results => {
+                    res.redirect('/health');
+            //     })
+            
+        })
+})
+app.get('/health', (req, res) => {
+    let health_API = process.env.health_API;
+    let url = `http://newsapi.org/v2/top-headlines?category=health&country=us&apiKey=${health_API}`;
+    let healthArray = [];
+    superagent(url)
+        .then(result => {
+            healthArray = result.body.articles.map(item => {
+                return new Health(item);
+            })
+            // res.status(200).json(healthArray);
+            let SQL2 = `SELECT * FROM healthcomments;`;
+            client.query(SQL2)
+                .then(results => {
+                    // console.log(results.rows);
+                    // res.render('pages/health', {results: results.rows});
+                    res.render('pages/health', { healthData: healthArray, results: results.rows });
+                })
 
+        })
+});
+
+function Health(data) {
+    this.title = data.title;
+    this.urlToImage = data.urlToImage;
+    this.description = data.description;
+    this.url = data.url;
+}
 // ----------------------------------------------------------------
 
 
@@ -102,7 +143,48 @@ function News(data) {
 
 
 // ------------------------------------Ghafri-----------------------
+app.post('/scomments/:comnts_id', (req, res) => {
+    let postNum = req.params.comnts_id;
+    // console.log(postNum);
+    let SQL = `INSERT INTO sportcomments (post,comment) VALUES ($1,$2);`;
+    let values = [postNum,req.body.Ntext];
+    client.query(SQL, values)
+        .then(() => {
+            // let SQL2 = `SELECT * FROM comments`
+            // client.query(SQL2)
+            //     .then(results => {
+                    res.redirect('/sport');
+            //     })
+            
+        })
+})
+app.get('/sport', (req, res) => {
+    let sport_API = process.env.sport_API;
+    let url = `http://newsapi.org/v2/top-headlines?category=sport&country=us&apiKey=${sport_API}`;
+    let sportArray = [];
+    superagent(url)
+        .then(result => {
+            sportArray = result.body.articles.map(item => {
+                return new Sport(item);
+            })
+            // res.status(200).json(sportArray);
+            let SQL2 = `SELECT * FROM sportcomments;`;
+            client.query(SQL2)
+                .then(results => {
+                    // console.log(results.rows);
+                    // res.render('pages/sport', {results: results.rows});
+                    res.render('pages/sport', { sportData: sportArray, results: results.rows });
+                })
 
+        })
+});
+
+function Sport(data) {
+    this.title = data.title;
+    this.urlToImage = data.urlToImage;
+    this.description = data.description;
+    this.url = data.url;
+}
 // ----------------------------------------------------------------
 
 
