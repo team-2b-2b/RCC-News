@@ -7,6 +7,16 @@
 </head>
 <body>
     <h1>hello</h1>
+    <div>
+        <ul>
+            <% outpot.forEach(element =>{ %>
+                <li>
+                    <%= element.description %>
+                    <%= element.time %>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 
     <form action="/tosearch" method="post">
         <input type="text" placeholder="Enter a title or author" name="search" id="bar"><br>
