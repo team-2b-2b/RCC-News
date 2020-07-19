@@ -289,7 +289,7 @@ function Weather(day) {
 
 
 app.get('/searches', (req, res) => {
-    res.render('pages/searches');
+     res.render('pages/searches');
 })
 
 app.post('/tosearch', (req, res) => {
