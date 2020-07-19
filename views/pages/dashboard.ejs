@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health News</title>
+    <link rel="stylesheet" href="css/news.css">
+</head>
+
+<body>
+    <main>
+        <h1>Dashboard</h1>
+        <% results.forEach ((item,ind) => { %>
+        <section>
+            <h4><%= item.user_name %> shared this article</h4>
+            <img src="<%=item.userimg %>" alt="">
+            <p><%= item.publishedat %></p>
+            <img src="<%= item.urltoimage %>" alt="">
+            <h3><%= item.title %></h3>
+            <p> <%= item.author %></p>
+            <p><%= item.content %></p>
+            <a href="<%=item.url%>">See more</a>
+           
+        </section>
+        <% }); %>
+        
+
+
+
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

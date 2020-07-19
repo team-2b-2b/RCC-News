@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 const methodOverride = require('method-override');
+const { render } = require('ejs');
 app.use(methodOverride('_method'));
+
 
 
 ///////////////////////////////
@@ -84,7 +86,7 @@ function News(data) {
     if (data.urlToImage) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://previews.123rf.com/images/artinspiring/artinspiring1805/artinspiring180500364/101214558-politics-concept-illustration-idea-of-political-institution-.jpg`; }
-    
+
     this.url = data.url;
     this.author = data.author;
     this.content = data.content;
@@ -187,21 +189,21 @@ function Tech(data) {
     if (data.urlToImage) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://i.nextmedia.com.au/News/CRN_690_coding.jpg`; }
-    
- this.url = data.url;
+
+    this.url = data.url;
     this.author = data.author;
-this.content = data.content;
-this.publishedAt = data.publishedAt;
+    this.content = data.content;
+    this.publishedAt = data.publishedAt;
 }
 
-app.post('/addfavorite',(req,res) =>{
-    let { category, urlToImage, author, title, url, publishedAt, content} = req.body;
-let SQL = `INSERT INTO favorite (category, urlToImage, author, title, url, publishedAt, content) VALUES ($1,$2,$3,$4,$5,$6,$7);`;
-let values = [category, urlToImage, author, title, url, publishedAt, content];
-client.query(SQL, values);
+app.post('/addfavorite', (req, res) => {
+    let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
+    let SQL = `INSERT INTO favorite (category, urlToImage, author, title, url, publishedAt, content) VALUES ($1,$2,$3,$4,$5,$6,$7);`;
+    let values = [category, urlToImage, author, title, url, publishedAt, content];
+    client.query(SQL, values);
 });
 
-app.get('/favorite',(req,res)=>{
+app.get('/favorite', (req, res) => {
     let SQL = `SELECT * FROM favorite;`;
     client.query(SQL)
         .then(results => {
@@ -215,9 +217,9 @@ app.get('/favorite',(req,res)=>{
 // ------------------------------------Ghafri-----------------------
 app.post('/scomments/:comnts_id', (req, res) => {
     let postNum = req.params.comnts_id;
-    // console.log(postNum);
-    let SQL = `INSERT INTO sportcomments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum, req.body.Ntext];
+    console.log(user_name);
+    let SQL = `INSERT INTO sportcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
@@ -268,16 +270,20 @@ app.get('/', (request, response) => {
     let url = `https://api.weatherbit.io/v2.0/forecast/daily?city=amman&key=${key}`;
     let newWeather = [];
     superagent(url).then(weather => {
+        // response.send(weather.body)
         newWeather = weather.body.data.map(element => {
+            // console.log(element)
             return new Weather(element);
         })
-        console.log(newWeather);
-        response.render('index', {outpot: newWeather});
+        // console.log(newWeather);
+        response.render('index', { outpot: newWeather });
     })
 });
 
 function Weather(day) {
     this.description = day.weather.description;
+    this.hTemp = day.max_temp;
+    this.icon = `https://www.weatherbit.io/static/img/icons/${day.weather.icon}.png`
     this.time = new Date(day.valid_date).toString().slice(0, 15);
 }
 //-----------------------------------------------------------------
@@ -289,7 +295,7 @@ function Weather(day) {
 
 
 app.get('/searches', (req, res) => {
-     res.render('pages/searches');
+    res.render('pages/searches');
 })
 
 app.post('/tosearch', (req, res) => {
@@ -321,7 +327,84 @@ function Search(data) {
 //------------------------------------------------------------------------
 
 
+//--------------------------users-----------------------------------------
+var user_name = 'RCC User';
+var userimg = '/img/person.png';
+app.post('/signup', (req, res) => {
+    res.render('pages/signuppage');
+})
 
+app.post('/signingup', (req, res) => {
+    let user_name = req.body.user_name;
+    let password = req.body.password;
+    let gender = req.body.gender;
+    if (gender == 'Male') {  userimg = `/img/person.png `}
+    if (gender == 'Female') {  userimg = `/img/woman.png` }
+
+
+    let SQL = 'INSERT INTO users (user_name,password,userimg) VALUES ($1,$2,$3);';
+    let values = [user_name, password, userimg];
+    client.query(SQL, values)
+        .then(results => {
+            res.redirect('/');
+        })
+
+})
+
+app.post('/signin', (req, res) => {
+    res.render('pages/signinpage');
+})
+
+app.post('/signingin', (req, res) => {
+    // user_name = req.body.user_name;
+    let password = req.body.password;
+    // userimg =  results.rows.userimg;
+    let SQL = 'SELECT * FROM  users WHERE user_name= $1 AND password=$2;';
+    let values = [req.body.user_name, password];
+    client.query(SQL, values)
+        .then(results => {
+            if (results.rows) {
+                user_name = results.rows[0].user_name;
+                userimg = results.rows[0].userimg;
+                console.log(results.rows[0].userimg);
+                res.redirect('/');
+            }
+            else {
+                console.log('here');
+                res.render('pages/signinpage');
+            }
+
+        })
+
+})
+
+app.post('/signout', (req, res) => {
+    user_name = 'RCC User';
+    res.redirect('/');
+})
+
+//-------------------------------------------------------------------------
+
+//-----------------------------Dashboard------------------------------------
+
+
+app.post('/share', (req, res) => {
+    let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
+    console.log(req.body);
+    let SQL = `INSERT INTO dashboard (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
+    let values = [user_name,userimg,category, urlToImage, author, title, url, publishedAt, content];
+    client.query(SQL, values);
+});
+
+app.get('/dashboard', (req, res) => {
+    let SQL = `SELECT * FROM dashboard;`;
+    client.query(SQL)
+        .then(results => {
+            res.render('pages/dashboard', {results: results.rows});
+        })
+});
+
+//--------------------------------------------------------------------------
 
 
 app.get('*', notFound);

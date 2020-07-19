@@ -1,0 +1,251 @@
+/* body {
+    margin-top:110px;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+header {
+    position: fixed;
+    background-color: #204051;
+    top: 0;
+    width: 100%;
+    /* height: 75px; */
+}
+
+header nav {
+    padding-top: 0%;
+}
+
+/* ul{
+    display: inline;
+} */
+
+/* header nav ul li{
+    display: inline-block;
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+
+}
+header nav ul li img{
+    padding-top: 1%;
+    
+
+    width: 130px;
+    height: 130px;
+}
+header nav ul li:nth-child(1){
+    float: left;
+   
+}
+header nav ul li:nth-child(2){
+    margin-top: 2%;
+    margin-left: 45%;
+    line-height: 72px;
+}
+header nav ul li:nth-child(3),header nav ul li:nth-child(4),header nav ul li:nth-child(5){
+margin-left: 3%;
+}
+header ul li a{
+    color: aqua;
+    text-decoration: none;
+}
+
+header nav ul li:nth-child(5) a i{
+    margin-left: 109%;
+} */
+
+header nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+li:first-child~li {
+    margin: 6.5% 2% 0 0;
+    font-family: 'Anton', sans-serif;
+    font-size: 25px;
+
+}
+a{
+    width: fit-content;
+}
+
+nav ul li:nth-child(2) {
+    margin-left: 45%;
+}
+
+
+
+ul {
+    width: 75%;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: flex-start;
+}
+
+header ul li a {
+    color: #e4e3e3;
+    text-decoration: none;
+    text-emphasis: unset;
+}
+
+header nav ul li img {
+    padding-top: 1%;
+    width: 130px;
+    height: 130px;
+}
+
+.formSearch{
+    margin: 4.5% 0 0 3%;
+    /* display: inline-block; */
+}
+.formSearch input{
+    margin: auto;
+    display: block;
+}
+.formSearch button{
+    display: block;
+    border: 1px solid grey;
+    width: 75px;
+    height: 36px;
+    margin: -21.9% 0 0 100%;
+    background-color: #84a9ac;
+}
+main {
+    width: 100%;
+    /* position: absolute; */
+    margin: 8.8% 0 0 0;
+}
+
+.searchHome {
+    display: block;
+    /* padding: 1%; */
+    line-height: 5px;
+    margin: 0% 1% -20% 1%;
+    height: 30px;
+}
+
+
+.sectionOneHome div:nth-child(1) form:nth-child(1) {
+    margin: auto;
+    grid-area: formOne;
+        
+}
+.sectionOneHome div:nth-child(1) form:nth-child(1) input{
+    
+    height: 50px;
+    width: 250px;
+    background-color: rgba(132, 169, 172,0.7);
+
+    border: 1px solid grey;
+    border-radius: 7px;
+
+
+}
+.sectionOneHome div:nth-child(1) form:nth-child(2) {
+    margin: auto;
+    
+grid-area: formTwo;
+}
+.sectionOneHome div:nth-child(1) form:nth-child(2) input{
+    height: 50px;
+    width: 250px;
+    background-color: rgba(132, 169, 172,0.7);
+
+    border: 1px solid grey;
+    border-radius: 7px;
+}
+
+.sectionOneHome div:nth-child(1) form:nth-child(3) {
+    margin:0 auto;
+    grid-area: formThree;
+}
+.sectionOneHome div:nth-child(1) form:nth-child(3) input{
+    height: 50px;
+    width: 250px;
+    background-color: rgba(132, 169, 172,0.7);
+    /* opacity: 0.5; */
+    border: 1px solid grey;
+    border-radius: 7px;
+}
+
+
+.sectionOneHome div:nth-child(1) {
+    width: 100%;
+    margin: 0;
+    background-image: url("/img/mainImage.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 650px;
+  
+    height: 650px;
+    display: grid;
+    grid-template-areas:'formOne formOne formTwo formTwo''formThree formThree formThree formThree';
+}
+
+
+
+/* .sectionOneHome div:nth-child(1) form:nth-child(1) input{
+    margin: 10%;
+} */
+
+/*-----For Section Two Home ----------*/
+
+.sectionTwoHome{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.sectionTwoHome div:first-child{
+    background-color: #84a9ac;
+    width: 25%;
+    height: 600px;
+    overflow: scroll;
+    margin: 0;
+}
+
+
+
+/*-------------------------------------------*/
+
+
+/*---------------------Weather section----------------------*/
+.homeDivForWeather h2{
+    margin: 9% 0 0 0;
+    font-family: 'Dancing Script', cursive;
+    font-size: 34px;
+    text-align: center;
+
+}
+.homeDivForWeather ul{
+
+    margin: 16% 0 0 10%;
+}
+.homeDivForWeather ul li{
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #e4e3e3;
+    text-align: center;
+    width: 100%;
+}
+
+/*-------------------------------------------*/
+
+
+
+/*--------------------------------------------------------- this for scroll bar for weather side bar --------------------------------------------------------------*/
+.homeDivForWeather::-webkit-scrollbar {
+    width: 12px;
+}
+
+.homeDivForWeather::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+.homeDivForWeather::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #204051;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+/*-------------------------------------------*/

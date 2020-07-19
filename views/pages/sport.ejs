@@ -30,19 +30,33 @@
                 
                 <button>Add To Favorite</button>
             </form>
+            <form action="/share" method="post">
+                <input style="display: none;" type="text" id="category" name="category" value="Sport News"><br>
+                <input style="display: none;" type="text" id="urlToImage" name="urlToImage" value="<%= item.urlToImage %>"><br>
+                <input style="display: none;" type="text" id="author" name="author" value="<%= item.author %>"><br>
+                <input style="display: none;" type="text" id="title" name="title" value="<%= item.title %>"><br>
+                <input style="display: none;" type="text" id="url" name="url" value="<%= item.url %>"><br>
+                <input style="display: none;" type="text" id="publishedAt" name="publishedAt" value="<%= item.publishedAt %>"><br>
+                <input style="display: none;" type="text" id="content" name="content" value="<%= item.content %>"><br>
+                
+                <button>Share</button>
+            </form>
             <div class="commentBox">
                 <!-- <label for="example">Add a comment</label> -->
                 <form action="/scomments/<%= ind %>" class="addComment" method="post">
+                    <input  type="text" id="title" name="title" value="<%= item.title %>" style="display: none;" >
                     <input id="comment<%= ind%>" type="text" name="Ntext" size="20">
-                    <input type="submit" id="<%= ind%>" name="<%= ind%>" value="Send">
+                    <input type="submit" id="<%= ind%>" name="<%= item.title%>" value="Send" >
                 </form>
                 
-                <ul class="comments" id="<%= ind%>W">
+                <ul class="comments" >
 
                     <% results.forEach (item2 => { %>
                         
-                        <% if(item2.post == ind){ %>
+                        <% if(item2.title == item.title){ %>
                     <li>
+                        <img src="<%=item2.userimg%>" alt="">
+                        <p><%=item2.user_name%></p>
                         <%= item2.comment; %>
                     </li>
                     <% }}); %>
