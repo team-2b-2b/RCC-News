@@ -268,7 +268,9 @@ app.get('/', (request, response) => {
     let url = `https://api.weatherbit.io/v2.0/forecast/daily?city=amman&key=${key}`;
     let newWeather = [];
     superagent(url).then(weather => {
+        // response.send(weather.body)
         newWeather = weather.body.data.map(element => {
+            // console.log(element)
             return new Weather(element);
         })
         console.log(newWeather);
@@ -278,6 +280,8 @@ app.get('/', (request, response) => {
 
 function Weather(day) {
     this.description = day.weather.description;
+    this.hTemp=day.max_temp;
+    this.icon=`https://www.weatherbit.io/static/img/icons/${day.weather.icon}.png`
     this.time = new Date(day.valid_date).toString().slice(0, 15);
 }
 //-----------------------------------------------------------------
