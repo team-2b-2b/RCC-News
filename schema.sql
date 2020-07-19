@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS dashboard;
 CREATE TABLE dashboard (
   id SERIAL PRIMARY KEY,
   user_name VARCHAR (255),
-  userimg VARCHAR (255)
+  userimg VARCHAR (255),
   category VARCHAR(255),
   urlToImage VARCHAR(255),
   author VARCHAR(255),

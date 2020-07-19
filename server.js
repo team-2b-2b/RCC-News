@@ -16,6 +16,7 @@ const { render } = require('ejs');
 app.use(methodOverride('_method'));
 
 
+
 ///////////////////////////////
 // install them in your terminal: 
 // npm init
@@ -389,7 +390,8 @@ app.post('/signout', (req, res) => {
 
 app.post('/share', (req, res) => {
     let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
-    let SQL = `INSERT INTO dashboard (user_name,userimg,category, urlToImage, author, title, url, publishedAt, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
+    console.log(req.body);
+    let SQL = `INSERT INTO dashboard (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
     let values = [user_name,userimg,category, urlToImage, author, title, url, publishedAt, content];
     client.query(SQL, values);
 });
@@ -398,7 +400,7 @@ app.get('/dashboard', (req, res) => {
     let SQL = `SELECT * FROM dashboard;`;
     client.query(SQL)
         .then(results => {
-            res.render('pages/dashboard', {results: results.rows });
+            res.render('pages/dashboard', {results: results.rows});
         })
 });
 
