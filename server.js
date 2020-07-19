@@ -38,23 +38,23 @@ app.set('view engine', 'ejs');
 app.get('/pages/news', (req, res) => {
     res.render('pages/news');
 })
-app.get('/', (req, res) => {
-    res.render('index');
-})
+// app.get('/', (req, res) => {
+//     res.render('index');
+// })
 
 app.post('/comments/:comnt_id', (req, res) => {
     let postNum = req.params.comnt_id;
     // console.log(postNum);
     let SQL = `INSERT INTO comments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum,req.body.Ntext];
+    let values = [postNum, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
             // client.query(SQL2)
             //     .then(results => {
-                    res.redirect('/news');
+            res.redirect('/news');
             //     })
-            
+
         })
 })
 
@@ -96,15 +96,15 @@ app.post('/hcomments/:comnth_id', (req, res) => {
     let postNum = req.params.comnth_id;
     // console.log(postNum);
     let SQL = `INSERT INTO healthcomments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum,req.body.Ntext];
+    let values = [postNum, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
             // client.query(SQL2)
             //     .then(results => {
-                    res.redirect('/health');
+            res.redirect('/health');
             //     })
-            
+
         })
 })
 app.get('/health', (req, res) => {
@@ -145,15 +145,15 @@ app.post('/tcomments/:comntt_id', (req, res) => {
     let postNum = req.params.comntt_id;
     // console.log(postNum);
     let SQL = `INSERT INTO techcomments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum,req.body.Ntext];
+    let values = [postNum, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
             // client.query(SQL2)
             //     .then(results => {
-                    res.redirect('/tech');
+            res.redirect('/tech');
             //     })
-            
+
         })
 })
 app.get('/tech', (req, res) => {
@@ -194,15 +194,15 @@ app.post('/scomments/:comnts_id', (req, res) => {
     let postNum = req.params.comnts_id;
     // console.log(postNum);
     let SQL = `INSERT INTO sportcomments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum,req.body.Ntext];
+    let values = [postNum, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
             // client.query(SQL2)
             //     .then(results => {
-                    res.redirect('/sport');
+            res.redirect('/sport');
             //     })
-            
+
         })
 })
 app.get('/sport', (req, res) => {
@@ -236,33 +236,24 @@ function Sport(data) {
 }
 // ----------------------------------------------------------------
 
-//----------------------------ًWheather-----------------------------
-app.get('/weather', handlerOfWeather);
-function handlerOfWeather(request, response){
-    const lat = request.query.latitude;
-    const lon = request.query.longitude;
-    weatherInfo(lat, lon).then(weather =>{
-        // response.status(200).json(weather);
-        response.redirect('/');
-    });  
-}
-function weatherInfo(lat, lon){
-    let newWeather = [];
+//----------------------------Wheather-----------------------------
+app.get('/', (request, response) => {
+    // const city = request.query.city;
     let key = process.env.WEATHERBIT_KEY;
-    let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${key}`;
-    return superagent.get(url).then(weather =>{
-        let status = weather.body.data;
-        return status;
-    }).then(weather =>{
-        newWeather = weather.map(element =>{
+    let url = `https://api.weatherbit.io/v2.0/forecast/daily?city=amman&key=${key}`;
+    let newWeather = [];
+    superagent(url).then(weather => {
+        newWeather = weather.body.data.map(element => {
             return new Weather(element);
         })
-        return newWeather;
+        console.log(newWeather);
+        response.render('index', {outpot: newWeather});
     })
-}
-function Weather(day){
+});
+
+function Weather(day) {
     this.description = day.weather.description;
-    this.time = new Date(day.valid_date).toString().slice(0,15);
+    this.time = new Date(day.valid_date).toString().slice(0, 15);
 }
 //-----------------------------------------------------------------
 
@@ -272,25 +263,25 @@ function Weather(day){
 //---------------------------------search-------------------------------
 
 
-app.get('/searches',(req,res)=>{
+app.get('/searches', (req, res) => {
     res.render('pages/searches');
 })
 
-app.post('/tosearch',(req,res)=>{
+app.post('/tosearch', (req, res) => {
     // console.log(req.body.search);
     let toSearch = req.body.search;
-    let NEWS_API= process.env.NEWS_API;
-    let url =`https://newsapi.org/v2/everything?q=${toSearch}&apiKey=${NEWS_API}`;
+    let NEWS_API = process.env.NEWS_API;
+    let url = `https://newsapi.org/v2/everything?q=${toSearch}&apiKey=${NEWS_API}`;
     let searchArray = [];
 
     superagent(url)
-    .then(result => {
-        searchArray = result.body.articles.map(item => {
-            return new Search(item);
+        .then(result => {
+            searchArray = result.body.articles.map(item => {
+                return new Search(item);
+            })
+
+            res.render('pages/searches', { searchData: searchArray });
         })
-       
-             res.render('pages/searches', { searchData: searchArray});
-    })
 })
 
 function Search(data) {
