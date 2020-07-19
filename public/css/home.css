@@ -126,16 +126,77 @@ main {
     height: 30px;
 }
 
-.sectionOneHome {
+
+.sectionOneHome div:nth-child(1) form:nth-child(1) {
+    margin: auto;
+    grid-area: formOne;
+        
+}
+.sectionOneHome div:nth-child(1) form:nth-child(1) input{
+    
+    height: 50px;
+    width: 250px;
+    background-color: rgba(132, 169, 172,0.7);
+
+    border: 1px solid grey;
+    border-radius: 7px;
+
+
+}
+.sectionOneHome div:nth-child(1) form:nth-child(2) {
+    margin: auto;
+    
+grid-area: formTwo;
+}
+.sectionOneHome div:nth-child(1) form:nth-child(2) input{
+    height: 50px;
+    width: 250px;
+    background-color: rgba(132, 169, 172,0.7);
+
+    border: 1px solid grey;
+    border-radius: 7px;
+}
+
+.sectionOneHome div:nth-child(1) form:nth-child(3) {
+    margin:0 auto;
+    grid-area: formThree;
+}
+.sectionOneHome div:nth-child(1) form:nth-child(3) input{
+    height: 50px;
+    width: 250px;
+    background-color: rgba(132, 169, 172,0.7);
+    /* opacity: 0.5; */
+    border: 1px solid grey;
+    border-radius: 7px;
+}
+
+
+.sectionOneHome div:nth-child(1) {
+    width: 100%;
+    margin: 0;
+    background-image: url("/img/mainImage.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 650px;
+  
+    height: 650px;
+    display: grid;
+    grid-template-areas:'formOne formOne formTwo formTwo''formThree formThree formThree formThree';
+}
+
+
+
+/* .sectionOneHome div:nth-child(1) form:nth-child(1) input{
+    margin: 10%;
+} */
+
+/*-----For Section Two Home ----------*/
+
+.sectionTwoHome{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    /* width: 25%; */
-    /* height: fit-content; */
-    /* background-image: url("https://via.placeholder.com/1024x760"); */
 }
-
-.sectionOneHome div:first-child {
+.sectionTwoHome div:first-child{
     background-color: #84a9ac;
     width: 25%;
     height: 600px;
@@ -143,24 +204,12 @@ main {
     margin: 0;
 }
 
-.sectionOneHome div:nth-child(2) {
-    width: 75%;
-    margin: 0;
-    background-image: url("/img/mainImage.gif");
-    background-repeat: no-repeat;
-    background-size: 100% 600px;
-    /* background-color: aqua; */
-    height: 600px;
-}
-
-.sectionOneHome div:nth-child(2) img {
-    /* background-image: url("img/mainImage.gif");
-    background-color: aqua; */
-    width: 100%;
-    height: 500px;
-}
 
 
+/*-------------------------------------------*/
+
+
+/*---------------------Weather section----------------------*/
 .homeDivForWeather h2{
     margin: 9% 0 0 0;
     font-family: 'Dancing Script', cursive;
@@ -180,6 +229,9 @@ main {
     width: 100%;
 }
 
+/*-------------------------------------------*/
+
+
 
 /*--------------------------------------------------------- this for scroll bar for weather side bar --------------------------------------------------------------*/
 .homeDivForWeather::-webkit-scrollbar {
@@ -193,6 +245,7 @@ main {
 
 .homeDivForWeather::-webkit-scrollbar-thumb {
     border-radius: 10px;
+    background: #204051;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 /*-------------------------------------------*/
