@@ -1,1 +1,1 @@
-  $('.hidden').hide();
+  // $('.hidden').hide();
