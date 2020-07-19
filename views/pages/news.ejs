@@ -6,58 +6,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politics News</title>
     <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
-    <main>
-        <h1>Politics News</h1>
-        <% newsData.forEach ((item,ind) => { %>
-        <section>
-            <p><%= item.publishedAt %></p>
-            <img src="<%= item.urlToImage %>" alt="">
-            <h3><%= item.title %></h3>
-            <p>By <%= item.author %></p>
-            <p><%= item.content %></p>
-            <a href="<%=item.url%>">See more</a>
-            <form action="/addfavorite" method="post">
-                <input class="hidden" type="text" id="category" name="category" value="Politics News"><br>
-                <input class="hidden" type="text" id="urlToImage" name="urlToImage" value="<%= item.urlToImage %>"><br>
-                <input class="hidden" type="text" id="author" name="author" value="<%= item.author %>"><br>
-                <input class="hidden" type="text" id="title" name="title" value="<%= item.title %>"><br>
-                <input class="hidden" type="text" id="url" name="url" value="<%= item.url %>"><br>
-                <input class="hidden" type="text" id="publishedAt" name="publishedAt" value="<%= item.publishedAt %>"><br>
-                <input class="hidden" type="text" id="content" name="content" value="<%= item.content %>"><br>
-                
-                <button>Add To Favorite</button>
-            </form>
-            <div class="commentBox">
-                <!-- <label for="example">Add a comment</label> -->
-                <form action="/comments/<%= ind %>" class="addComment" method="post">
-                    <input id="comment<%= ind%>" type="text" name="Ntext" size="20">
-                    <input type="submit" id="<%= ind%>" name="<%= ind%>" value="Send">
-                </form>
-                
-                <ul class="comments" id="<%= ind%>W">
-
-                    <% results.forEach (item2 => { %>
-                        
-                        <% if(item2.post == ind){ %>
-                    <li>
-                        <%= item2.comment; %>
-                    </li>
-                    <% }}); %>
-
-
-                </ul>
+    <header>
+        <div id="header">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+                <!-- <h1>RCC</h1> -->
             </div>
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <div class="dropdown">
+                        <li class="droplist"><a>Categories</a></li>
+                        <div class="dropdown-content">
+                            <a href="">Jordan News</a>
+                            <a href="">Politics News</a>
+                            <a href="">Sport News</a>
+                            <a href="">Health News</a>
+                            <a href="">Technology News</a>
+                            <a href="">Fake News</a>
+                        </div>
+                    </div>
+                    <li><a href="">Read Later</a></li>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <form class="formSearch" action="/tosearch" method="post">
+                <input class="searchHome" type="text" placeholder="Search For Country News" required>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div id="heroContainer">
+            <div id="titleContainer">
+                <h1 id="title">Politics News</h1>
+            </div>
+        </div>
+        <article>
+            <section class="userInfo">
+                <div class="basicInfo">
+                    <img src="img/user.JPG" alt="" class="user1">
+                    <h4>RCC-user</h4>
+                </div>
+            </section>
+            <section id="allNews">
+                <% newsData.forEach ((item,ind) => { %>
+                <div class="container">
+                    <div class="news">
+                        <img src="<%= item.urlToImage %>" alt="">
+                        <div class="info">
+                            <h3><%= item.title %></h3>
+                            <p class="date"><%= item.publishedAt %></p>
+                            <h4><%= item.author %></h4>
+                            <p class="desc"><%= item.content %></p>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="readMore"><a href="<%=item.url%>">Read More</a></button>
+                        <form action="/addfavorite" method="post" class="form">
+                            <input class="hidden" type="text" id="category" name="category" value="Politics News"><br>
+                            <input class="hidden" type="text" id="urlToImage" name="urlToImage"
+                                value="<%= item.urlToImage %>"><br>
+                            <input class="hidden" type="text" id="author" name="author" value="<%= item.author %>"><br>
+                            <input class="hidden" type="text" id="title" name="title" value="<%= item.title %>"><br>
+                            <input class="hidden" type="text" id="url" name="url" value="<%= item.url %>"><br>
+                            <input class="hidden" type="text" id="publishedAt" name="publishedAt"
+                                value="<%= item.publishedAt %>"><br>
+                            <input class="hidden" type="text" id="content" name="content"
+                                value="<%= item.content %>"><br>
 
-        </section>
-        <% }); %>
+                            <button class="readMore">Read Later</button>
+                        </form>
+                    </div>
+                    <div class="commentBox">
+                        <!-- <label for="example">Add a comment</label> -->
+                        <div class="newComments">
+                            <img src="img/user.JPG" alt="" class="user1">
+                            <form action="/comments/<%= ind %>" class="addComment" method="post">
+                                <input id="comment<%= ind%>" class="commentPlace" placeholder="Add your comment..."
+                                    type="text" name="Ntext" size="20">
+                                <input type="submit" class="commentsButton" name="<%= ind%>" value="Comment">
+                            </form>
+                        </div>
+                        <ul class="comments" id="<%= ind%>W">
 
+                            <% results.forEach (item2 => { %>
+
+                            <% if(item2.post == ind){ %>
+                            <li class="user">
+                                <img src="img/user.JPG" alt="">
+                                <div class="userComment">
+                                    <h3>RCC-user</h3>
+                                    <p><%= item2.comment; %></p>
+                                </div>
+                            </li>
+                            <% }}); %>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <% }); %>
+            </section>
+        </article>
 
 
 
     </main>
+    <footer>
+        <div id="footer">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+            </div>
+        </div>
+    </footer>
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="app.js"></script>
 </body>
