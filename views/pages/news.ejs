@@ -4,20 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News</title>
+    <title>Politics News</title>
     <link rel="stylesheet" href="css/news.css">
 </head>
 
 <body>
     <main>
-        <h1>news</h1>
+        <h1>Politics News</h1>
         <% newsData.forEach ((item,ind) => { %>
         <section>
+            <p><%= item.publishedAt %></p>
             <img src="<%= item.urlToImage %>" alt="">
             <h3><%= item.title %></h3>
-            <p><%= item.description %></p>
+            <p>By <%= item.author %></p>
+            <p><%= item.content %></p>
             <a href="<%=item.url%>">See more</a>
-
+            <form action="/addfavorite" method="post">
+                <input class="hidden" type="text" id="category" name="category" value="Politics News"><br>
+                <input class="hidden" type="text" id="urlToImage" name="urlToImage" value="<%= item.urlToImage %>"><br>
+                <input class="hidden" type="text" id="author" name="author" value="<%= item.author %>"><br>
+                <input class="hidden" type="text" id="title" name="title" value="<%= item.title %>"><br>
+                <input class="hidden" type="text" id="url" name="url" value="<%= item.url %>"><br>
+                <input class="hidden" type="text" id="publishedAt" name="publishedAt" value="<%= item.publishedAt %>"><br>
+                <input class="hidden" type="text" id="content" name="content" value="<%= item.content %>"><br>
+                
+                <button>Add To Favorite</button>
+            </form>
             <div class="commentBox">
                 <!-- <label for="example">Add a comment</label> -->
                 <form action="/comments/<%= ind %>" class="addComment" method="post">
@@ -46,8 +58,8 @@
 
 
     </main>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="app.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

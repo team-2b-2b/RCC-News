@@ -84,8 +84,11 @@ function News(data) {
     if (data.urlToImage) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://previews.123rf.com/images/artinspiring/artinspiring1805/artinspiring180500364/101214558-politics-concept-illustration-idea-of-political-institution-.jpg`; }
-    this.description = data.description;
+    
     this.url = data.url;
+    this.author = data.author;
+    this.content = data.content;
+    this.publishedAt = data.publishedAt;
 }
 // ----------------------------------------------------------------
 
@@ -132,8 +135,10 @@ function Health(data) {
     this.title = data.title;
     if (data.urlToImage) {
         this.urlToImage = data.urlToImage;
-    } else { this.urlToImage = `https://lh3.googleusercontent.com/proxy/tI8M3GhQWTvdQRffsevjnCjCbElBP-OEH6BmgIvZ6-At1yFcXmRljMHJ5Kan-927_Nr-iAt0JLWrYa2oP1iK9IqbVTUoTP617BWbnKLNXEk-VUopH0PUkuh_n6feHLSlXnSnUPTH9N2CebCR0n8gM6DvO8yon-muPtKl6RNf4yg_NRBlKJc`; }
-    this.description = data.description;
+    } else { this.urlToImage = `https://www.phoneworld.com.pk/wp-content/uploads/2020/03/Digitization-health-sector-Pakistan.jpg`; }
+    this.author = data.author;
+    this.content = data.content;
+    this.publishedAt = data.publishedAt;
     this.url = data.url;
 }
 // ----------------------------------------------------------------
@@ -182,9 +187,27 @@ function Tech(data) {
     if (data.urlToImage) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://i.nextmedia.com.au/News/CRN_690_coding.jpg`; }
-    this.description = data.description;
-    this.url = data.url;
+    
+ this.url = data.url;
+    this.author = data.author;
+this.content = data.content;
+this.publishedAt = data.publishedAt;
 }
+
+app.post('/addfavorite',(req,res) =>{
+    let { category, urlToImage, author, title, url, publishedAt, content} = req.body;
+let SQL = `INSERT INTO favorite (category, urlToImage, author, title, url, publishedAt, content) VALUES ($1,$2,$3,$4,$5,$6,$7);`;
+let values = [category, urlToImage, author, title, url, publishedAt, content];
+client.query(SQL, values);
+});
+
+app.get('/favorite',(req,res)=>{
+    let SQL = `SELECT * FROM favorite;`;
+    client.query(SQL)
+        .then(results => {
+            res.status(200).json(results.rows);
+        })
+});
 // ----------------------------------------------------------------
 
 
@@ -231,7 +254,9 @@ function Sport(data) {
     if (data.urlToImage) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR68KlBNlBfL6n8ujQTRzl6X0YBTIcmLhDXEQ&usqp=CAU`; }
-    this.description = data.description;
+    this.author = data.author;
+    this.content = data.content;
+    this.publishedAt = data.publishedAt;
     this.url = data.url;
 }
 // ----------------------------------------------------------------
