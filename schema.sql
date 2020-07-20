@@ -3,6 +3,9 @@ DROP TABLE IF EXISTS comments;
 CREATE TABLE comments(
     id SERIAL PRIMARY KEY,
     post INT,
+    userimg VARCHAR (255),
+    title VARCHAR (255),
+    user_name VARCHAR (255),
     comment Text
 );
 
@@ -10,6 +13,9 @@ DROP TABLE IF EXISTS healthcomments;
 CREATE TABLE healthcomments(
     id SERIAL PRIMARY KEY,
     post INT,
+    userimg VARCHAR (255),
+    title VARCHAR (255),
+    user_name VARCHAR (255),
     comment Text
 );
 
@@ -25,8 +31,11 @@ CREATE TABLE sportcomments(
 
 DROP TABLE IF EXISTS techcomments;
 CREATE TABLE techcomments(
-    id SERIAL PRIMARY KEY,
+   id SERIAL PRIMARY KEY,
     post INT,
+    userimg VARCHAR (255),
+    title VARCHAR (255),
+    user_name VARCHAR (255),
     comment Text
 );
 

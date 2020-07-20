@@ -47,8 +47,8 @@ app.get('/pages/news', (req, res) => {
 app.post('/comments/:comnt_id', (req, res) => {
     let postNum = req.params.comnt_id;
     // console.log(postNum);
-    let SQL = `INSERT INTO comments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum, req.body.Ntext];
+    let SQL = `INSERT INTO comments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
@@ -75,7 +75,7 @@ app.get('/news', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/news', {results: results.rows});
-                    res.render('pages/news', { newsData: newsArray, results: results.rows });
+                    res.render('pages/news', { signin: userArray,newsData: newsArray, results: results.rows });
                 })
 
         })
@@ -100,8 +100,8 @@ function News(data) {
 app.post('/hcomments/:comnth_id', (req, res) => {
     let postNum = req.params.comnth_id;
     // console.log(postNum);
-    let SQL = `INSERT INTO healthcomments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum, req.body.Ntext];
+    let SQL = `INSERT INTO healthcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
@@ -127,7 +127,7 @@ app.get('/health', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/health', {results: results.rows});
-                    res.render('pages/health', { healthData: healthArray, results: results.rows });
+                    res.render('pages/health', {signin: userArray, healthData: healthArray, results: results.rows });
                 })
 
         })
@@ -151,8 +151,8 @@ function Health(data) {
 app.post('/tcomments/:comntt_id', (req, res) => {
     let postNum = req.params.comntt_id;
     // console.log(postNum);
-    let SQL = `INSERT INTO techcomments (post,comment) VALUES ($1,$2);`;
-    let values = [postNum, req.body.Ntext];
+    let SQL = `INSERT INTO techcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
     client.query(SQL, values)
         .then(() => {
             // let SQL2 = `SELECT * FROM comments`
@@ -178,7 +178,7 @@ app.get('/tech', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/tech', {results: results.rows});
-                    res.render('pages/tech', { techData: techArray, results: results.rows });
+                    res.render('pages/tech', { signin: userArray,techData: techArray, results: results.rows });
                 })
 
         })
@@ -245,7 +245,7 @@ app.get('/sport', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/sport', {results: results.rows});
-                    res.render('pages/sport', { sportData: sportArray, results: results.rows });
+                    res.render('pages/sport', { signin: userArray,sportData: sportArray, results: results.rows });
                 })
 
         })
@@ -350,12 +350,14 @@ app.post('/signingup', (req, res) => {
         })
 
 })
+var userArray=[];
 
 app.post('/signin', (req, res) => {
     res.render('pages/signinpage');
 })
 
 app.post('/signingin', (req, res) => {
+     userArray=[];
     // user_name = req.body.user_name;
     let password = req.body.password;
     // userimg =  results.rows.userimg;
@@ -366,6 +368,9 @@ app.post('/signingin', (req, res) => {
             if (results.rows) {
                 user_name = results.rows[0].user_name;
                 userimg = results.rows[0].userimg;
+                userArray.push(user_name);
+                userArray.push(userimg);
+
                 console.log(results.rows[0].userimg);
                 res.redirect('/');
             }
@@ -390,10 +395,11 @@ app.post('/signout', (req, res) => {
 
 app.post('/share', (req, res) => {
     let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
-    console.log(req.body);
     let SQL = `INSERT INTO dashboard (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
     let values = [user_name,userimg,category, urlToImage, author, title, url, publishedAt, content];
-    client.query(SQL, values);
+    client.query(SQL, values)
+        
+    
 });
 
 app.get('/dashboard', (req, res) => {
@@ -405,7 +411,9 @@ app.get('/dashboard', (req, res) => {
 });
 
 //--------------------------------------------------------------------------
-
+app.get('/welcome',(req,res)=>{
+    res.render('welcome');
+})
 
 app.get('*', notFound);
 
