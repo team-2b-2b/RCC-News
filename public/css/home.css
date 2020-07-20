@@ -2,7 +2,9 @@ main {
     width: 100%;
     /* position: absolute; */
     /* margin: 8.8% 0 0 0; */
+    background-color: #204051;
 }
+
 .searchHome {
     display: block;
     /* padding: 1%; */
@@ -10,90 +12,148 @@ main {
     margin: 0% 1% -20% 1%;
     height: 30px;
 }
+
 .sectionOneHome div:nth-child(1) form:nth-child(1) {
     margin: auto;
     grid-area: formOne;
 }
-.sectionOneHome div:nth-child(1) form:nth-child(1) input{
+
+.sectionOneHome div:nth-child(1) form:nth-child(1) input {
     height: 50px;
     width: 250px;
-    background-color: rgba(132, 169, 172,0.7);
+    background-color: rgba(132, 169, 172, 0.7);
     border: 1px solid grey;
     border-radius: 7px;
 }
+
 .sectionOneHome div:nth-child(1) form:nth-child(2) {
     margin: auto;
-grid-area: formTwo;
+    grid-area: formTwo;
 }
-.sectionOneHome div:nth-child(1) form:nth-child(2) input{
+
+.sectionOneHome div:nth-child(1) form:nth-child(2) input {
     height: 50px;
     width: 250px;
-    background-color: rgba(132, 169, 172,0.7);
+    background-color: rgba(132, 169, 172, 0.7);
     border: 1px solid grey;
     border-radius: 7px;
 }
+
 .sectionOneHome div:nth-child(1) form:nth-child(3) {
-    margin:0 auto;
+    margin: 0 auto;
     grid-area: formThree;
 }
-.sectionOneHome div:nth-child(1) form:nth-child(3) input{
+
+.sectionOneHome div:nth-child(1) form:nth-child(3) input {
     height: 50px;
     width: 250px;
-    background-color: rgba(132, 169, 172,0.7);
+    background-color: rgba(132, 169, 172, 0.7);
     /* opacity: 0.5; */
     border: 1px solid grey;
     border-radius: 7px;
 }
+
 .sectionOneHome div:nth-child(1) {
     width: 100%;
     /* margin: -135px 0; */
-    background-image: url("/img/mainImage.gif");
+    background-image: url("/img/back for news.jpg");
     background-repeat: no-repeat;
     background-size: 100% 500px;
     height: 500px;
     display: grid;
-    grid-template-areas:'formOne formOne formTwo formTwo''formThree formThree formThree formThree';
+    grid-template-areas: 'formOne formOne formTwo formTwo''formThree formThree formThree formThree';
 }
+
 /* .sectionOneHome div:nth-child(1) form:nth-child(1) input{
     margin: 10%;
 } */
+
 /*-----For Section Two Home ----------*/
-.sectionTwoHome{
+
+.sectionTwoHome {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: flex-start;
+    background-color: #204051;
+    margin-top: 2%;
 }
-.sectionTwoHome div:first-child{
-    background-color: #355F6F;
-    width: 25%;
+
+.sectionTwoHome>div:first-child {
+    background-color: #e4e3e3;
+    border-right: 1px solid gray;
+    width: 24.9%;
     height: 500px;
     overflow-x: scroll;
     margin: 0;
 }
-.weatherStatus{
+
+.sectionTwoHome>div:nth-child(2) {
+    background-color: #e4e3e3;
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+}
+
+.sectionTwoHome>div:nth-child(2) div>img {
+    grid-area: img;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.sectionTwoHome>div:nth-child(2) div>h2 {
+    font-family: 'Dancing Script', cursive;
+font-weight: 900;
+    grid-area: h2h2h2;
+    padding-top: 5%;
+}
+
+.sectionTwoHome>div:nth-child(2) div>h2 a{
+    text-decoration: none;
+    color: gray;
+}
+
+.sectionTwoHome>div:nth-child(2) div>p {
+    grid-area: ppp;
+}
+
+.sectionTwoHome>div:nth-child(2) div {
+    width: 37%;
+    display: grid;
+    grid-template-areas: 'img h2h2h2''img ppp';
+    grid-template-columns: 200px 1fr;
+    margin: 5% 0 0 10%
+}
+
+.weatherStatus {
     display: flex;
 }
+
 /*-------------------------------------------*/
+
 /*---------------------Weather section----------------------*/
-.homeDivForWeather h2{
+
+.homeDivForWeather h2 {
     margin: 2% 0 0 0;
     font-family: 'Dancing Script', cursive;
     font-size: 34px;
     text-align: center;
 }
-.homeDivForWeather ul{
+
+.homeDivForWeather ul {
     margin: 5%;
 }
-.homeDivForWeather ul li{
+
+.homeDivForWeather ul li {
     display: inline-block;
     font-family: 'Dancing Script', cursive;
     font-size: 24px;
-    color: #E4E3E3;
+    color: #204051;
     text-align: center;
     width: 100%;
 }
-.homeDivForWeather ul li:nth-child(4n){
+
+.homeDivForWeather ul li:nth-child(4n) {
     border-bottom: 1px solid gray;
     margin-bottom: 10%;
-    
 }
