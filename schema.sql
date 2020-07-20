@@ -73,3 +73,14 @@ CREATE TABLE dashboard (
   publishedAt VARCHAR(255),
   content TEXT
   );
+
+  
+DROP TABLE IF EXISTS searchcomments;
+CREATE TABLE searchcomments(
+   id SERIAL PRIMARY KEY,
+    post INT,
+    userimg VARCHAR (255),
+    title VARCHAR (255),
+    user_name VARCHAR (255),
+    comment Text
+);

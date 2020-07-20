@@ -220,7 +220,7 @@ body{
 .user{
     display: flex;
 }
-.user img, .user1{
+.user img, .user1, .shareUser{
     height: 50px;
     width: 50px;
     border-radius: 50%;
