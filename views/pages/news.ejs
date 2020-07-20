@@ -16,20 +16,19 @@
         <div id="header">
             <div id="logo">
                 <img src="img/logo1.png" alt="">
-                <!-- <h1>RCC</h1> -->
             </div>
             <nav>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <div class="dropdown">
                         <li class="droplist"><a>Categories</a></li>
                         <div class="dropdown-content">
-                            <a href="">Jordan News</a>
-                            <a href="">Politics News</a>
-                            <a href="">Sport News</a>
-                            <a href="">Health News</a>
-                            <a href="">Technology News</a>
-                            <a href="">Fake News</a>
+                            <!-- <a href="">Jordan News</a> -->
+                            <a href="/news">Politics News</a>
+                            <a href="/sport">Sport News</a>
+                            <a href="/health">Health News</a>
+                            <a href="/tech">Technology News</a>
+                            <!-- <a href="">Fake News</a> -->
                         </div>
                     </div>
                     <li><a href="">Read Later</a></li>
@@ -38,7 +37,7 @@
                 </ul>
             </nav>
             <form class="formSearch" action="/tosearch" method="post">
-                <input class="searchHome" type="text" placeholder="Search For Country News" required>
+                <input class="searchHome" type="text" placeholder="Search For Country News..." required>
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
@@ -55,6 +54,10 @@
                     <img src="img/user.JPG" alt="" class="user1">
                     <h4>RCC-user</h4>
                 </div>
+                
+                <form action="/signout" method="post"> 
+                    <input type="submit" id="signIn" value="Sign Out">
+                </form>
             </section>
             <section id="allNews">
                 <% newsData.forEach ((item,ind) => { %>
@@ -122,9 +125,40 @@
     </main>
     <footer>
         <div id="footer">
-            <div id="logo">
+            <nav id="footerNav">
+                <ul>
+                    <li><a href="/politics">Politics News</a></li>
+                    <li><a href="/sport">Sport News</a></li>
+                    <li><a href="/health">Health News</a></li>
+                    <li><a href="/tech">Technology News</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <nav id="logo1">
                 <img src="img/logo1.png" alt="">
+                <ul>
+                    <li class="contact">
+                        <img src="img/phone.png">
+                        <p>+9627770004567</p>
+                    </li>
+                    <li class="contact">
+                        <img src="img/email.png">
+                        <p>rcc2020@info.com</p>
+                    </li>
+                </ul>
+            </nav>
+            <div id='footerIcons'>
+                <a href="https://web.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://web.twitter.com/" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://web.youtube.com/" target="_blank" class="fa fa-youtube"></a>
+                <a href="https://web.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://web.linkedin.com/" target="_blank" class="fa fa-linkedin"></a>
+
             </div>
+        </div>
+        <div id="copy">
+            <hr>
+            <p>RCC News &copy; 2020 &middot; All Copyrights are reserved</p>
         </div>
     </footer>
 

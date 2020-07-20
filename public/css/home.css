@@ -4,17 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-header {
+/* header {
     position: fixed;
     background-color: #204051;
     top: 0;
     width: 100%;
     /* height: 75px; */
-}
+/* }
 
 header nav {
     padding-top: 0%;
-}
+} */
 
 /* ul{
     display: inline;
@@ -54,7 +54,7 @@ header nav ul li:nth-child(5) a i{
     margin-left: 109%;
 } */
 
-header nav {
+/* header nav {
     display: flex;
     justify-content: flex-start;
 }
@@ -97,9 +97,9 @@ header nav ul li img {
 }
 
 .formSearch{
-    margin: 4.5% 0 0 3%;
+    margin: 4.5% 0 0 3%; */
     /* display: inline-block; */
-}
+/* }
 .formSearch input{
     margin: auto;
     display: block;
@@ -110,8 +110,8 @@ header nav ul li img {
     width: 75px;
     height: 36px;
     margin: -21.9% 0 0 100%;
-    background-color: #84a9ac;
-}
+    background-color: #84a9ac; */
+/* }  */
 main {
     width: 100%;
     /* position: absolute; */
@@ -173,10 +173,10 @@ grid-area: formTwo;
 
 .sectionOneHome div:nth-child(1) {
     width: 100%;
-    margin: 0;
+    margin: -135px 0;
     background-image: url("/img/mainImage.gif");
     background-repeat: no-repeat;
-    background-size: 100% 650px;
+    background-size: 100% 500px;
   
     height: 650px;
     display: grid;
@@ -192,18 +192,20 @@ grid-area: formTwo;
 /*-----For Section Two Home ----------*/
 
 .sectionTwoHome{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: inline-block;
+    /* flex-wrap: wrap; */
+    /* justify-content: flex-start; */
 }
 .sectionTwoHome div:first-child{
-    background-color: #84a9ac;
-    width: 25%;
-    height: 600px;
-    overflow: scroll;
+    background-color: #355F6F;
+    width: 100%;
+    height: 350px;
+    overflow-x: scroll;
     margin: 0;
 }
-
+.weatherStatus{
+    display: flex;
+}
 
 
 /*-------------------------------------------*/
@@ -211,17 +213,17 @@ grid-area: formTwo;
 
 /*---------------------Weather section----------------------*/
 .homeDivForWeather h2{
-    margin: 9% 0 0 0;
+    margin: 2% 0 0 0;
     font-family: 'Dancing Script', cursive;
     font-size: 34px;
     text-align: center;
 
 }
 .homeDivForWeather ul{
-
-    margin: 16% 0 0 10%;
+    margin: 5%;
 }
 .homeDivForWeather ul li{
+    display: inline-block;
     font-family: 'Dancing Script', cursive;
     font-size: 24px;
     color: #e4e3e3;
@@ -234,18 +236,18 @@ grid-area: formTwo;
 
 
 /*--------------------------------------------------------- this for scroll bar for weather side bar --------------------------------------------------------------*/
-.homeDivForWeather::-webkit-scrollbar {
+/* .homeDivForWeather::-webkit-scrollbar {
     width: 12px;
-}
+} */
 
-.homeDivForWeather::-webkit-scrollbar-track {
+/* .homeDivForWeather::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     border-radius: 10px;
-}
+} */
 
-.homeDivForWeather::-webkit-scrollbar-thumb {
+/* .homeDivForWeather::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: #204051;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
-}
+} */
 /*-------------------------------------------*/
