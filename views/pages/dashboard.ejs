@@ -4,27 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health News</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
+    <header>
+        <div id="header">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+                <!-- <h1>RCC</h1> -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <div class="dropdown">
+                        <li class="droplist"><a>Categories</a></li>
+                        <div class="dropdown-content">
+                            <a href="/news">Politics News</a>
+                            <a href="/sport">Sport News</a>
+                            <a href="/health">Health News</a>
+                            <a href="/tech">Technology News</a>
+
+                        </div>
+                    </div>
+                    <li><a href="">Read Later</a></li>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <form class="formSearch" action="/tosearch" method="post">
+                <input class="searchHome" type="text" placeholder="Search For Country News" required>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </header>
     <main>
-        <h1>Dashboard</h1>
-        <% results.forEach ((item,ind) => { %>
-        <section>
-            <h4><%= item.user_name %> shared this article</h4>
-            <img src="<%=item.userimg %>" alt="">
-            <p><%= item.publishedat %></p>
-            <img src="<%= item.urltoimage %>" alt="">
-            <h3><%= item.title %></h3>
-            <p> <%= item.author %></p>
-            <p><%= item.content %></p>
-            <a href="<%=item.url%>">See more</a>
-           
+        <div id="heroContainer">
+            <div id="titleContainer">
+                <h1 id="title">Politics News</h1>
+            </div>
+        </div>
+        <section id="allNews">
+            <% results.forEach ((item,ind) => { %>
+            <div class="container">
+
+                <img class="shareUser" src="<%=item.userimg %>" alt="">
+                <h4><%= item.user_name %> shared this article</h4>
+
+                <div class="news">
+                    <img src="<%= item.urltoimage %>" alt="">
+                    <div class="info">
+                        <h3><%= item.title %></h3>
+                        <p class="date"><%= item.publishedAt %></p>
+                        <h4><%= item.author %></h4>
+                        <p class="desc"><%= item.content %></p>
+                        <a href="<%=item.url%>">See more</a>
+                    </div>
+                </div>
+
+            </div>
+                <% }); %>
         </section>
-        <% }); %>
-        
+
 
 
 

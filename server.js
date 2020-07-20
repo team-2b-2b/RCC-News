@@ -293,7 +293,21 @@ function Weather(day) {
 
 //---------------------------------search-------------------------------
 
+app.post('/searchcomments/:comntsearch_id', (req, res) => {
+    let postNum = req.params.comntsearch_id;
+    console.log(user_name);
+    let SQL = `INSERT INTO searchcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
+    client.query(SQL, values)
+        .then(() => {
+            // let SQL2 = `SELECT * FROM comments`
+            // client.query(SQL2)
+            //     .then(results => {
+            res.redirect('/searches');
+            //     })
 
+        })
+})
 app.get('/searches', (req, res) => {
     res.render('pages/searches');
 })
@@ -310,8 +324,12 @@ app.post('/tosearch', (req, res) => {
             searchArray = result.body.articles.map(item => {
                 return new Search(item);
             })
+            let SQL2 = `SELECT * FROM searchcomments;`;
+            client.query(SQL2)
+                .then(results => {
+                  res.render('pages/searches', { signin: userArray, searchData: searchArray,results: results.rows });
+                })
 
-            res.render('pages/searches', { searchData: searchArray });
         })
 })
 
@@ -372,7 +390,7 @@ app.post('/signingin', (req, res) => {
                 userArray.push(userimg);
 
                 console.log(results.rows[0].userimg);
-                res.redirect('/');
+                res.redirect('/index');
             }
             else {
                 console.log('here');
@@ -398,6 +416,9 @@ app.post('/share', (req, res) => {
     let SQL = `INSERT INTO dashboard (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
     let values = [user_name,userimg,category, urlToImage, author, title, url, publishedAt, content];
     client.query(SQL, values)
+        .then(()=>{
+            res.redirect('/dashboard');
+        })
         
     
 });
