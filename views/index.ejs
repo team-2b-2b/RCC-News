@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -14,40 +15,53 @@
 <body>
 
     <header>
-        <nav>
-            <ul>
-                <li> <img src="img/Logo2.png"  alt="">
-                </li>
-                <li><a href="">News</a></li>
-                <li><a href="">Jordan_News</a></li>
-                <li><a href="">Sport</a></li>
-                <li><a href="">Health</a></li>
-                <li><a href="">Read_Later</a></li>
+        <div id="header">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+                <!-- <h1>RCC</h1> -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <div class="dropdown">
+                        <li class="droplist"><a>Categories</a></li>
+                        <div class="dropdown-content">
+                            <a href="/news">Politics News</a>
+                            <a href="/sport">Sport News</a>
+                            <a href="/health">Health News</a>
+                            <a href="/tech">Technology News</a>
 
-
-               
-            </ul>
-<form class="formSearch" action="/tosearch" method="post">
-    <input class="searchHome" type="text" placeholder="Search For Country News" required>
-    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-</form>
-        </nav>
+                        </div>
+                    </div>
+                    <li><a href="">Read Later</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <form class="formSearch" action="/tosearch" method="post">
+                <input class="searchHome" type="text" name="search" placeholder="Search For Country News" required>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+            <form action="/signout" method="post" id='buttonSignOut'>
+                <input type="submit" id="signIn" value="Sign Out">
+            </form>
+        </div>
     </header>
     <main>
-      
+
         <section class="sectionOneHome">
-            
+
             <div>
-               
-                <form action="/signup" method="post"> 
+
+                <!-- <form action="/signup" method="post" id="buttonSignUp"> 
                     <input type="submit" id="signUP" value="Sign UP">
-                </form>
-                <form action="/signout" method="post"> 
+                </form> -->
+                <!-- <form action="/signout" method="post" id='buttonSignOut'> 
                     <input type="submit" id="signIn" value="Sign Out">
-                </form>
-                <form action="/signin" method="post"> 
+                </form> -->
+                <!-- <form action="/signin" method="post" id='buttonSignIn'> 
                     <input type="submit" id="signIn" value="Sign In">
-                </form>
+                </form> -->
             </div>
         </section>
         <section class="sectionTwoHome">
@@ -60,16 +74,16 @@
                     </li>
                     <li>
 
-                        <img src="<%= element.icon %>" alt=""> 
+                        <img src="<%= element.icon %>" alt="">
                     </li>
-                        <li>
-                        
-                            <%= element.hTemp %>
-                        </li>
-                        <li>
-                        
-                            <%= element.description %>
-                        </li>
+                    <li>
+
+                        <%= element.hTemp %>
+                    </li>
+                    <li>
+
+                        <%= element.description %>
+                    </li>
                     <% }) %>
                 </ul>
             </div>
@@ -78,9 +92,14 @@
             </div>
         </section>
         <section>
+            <div>
+                <img src="" alt="">
+            </div>
+        </section>
+        <!-- <section>
 
 
-            <!-- <h1>hello</h1> -->
+           
             
 
             <form action="/tosearch" method="post">
@@ -88,9 +107,9 @@
                 <button type="submit">Search</button>
 
             </form>
-        </section>
+        </section> -->
 
-     
+
 
     </main>
 

@@ -66,6 +66,22 @@ body{
 #header nav ul li a:hover{
     color: #CCD5D6;
 }
+#buttonSignOut{
+    margin: 2% 0 0 2%;
+}
+#buttonSignOut input{
+    background-color: #84a9ac;
+    opacity: 0.7;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: block;
+    height: 25px;
+    width: 100px;
+}
+#buttonSignOut input:hover{
+    opacity: 1;
+
+}
 .dropdown {
     position: relative;
     display: inline-block;
@@ -233,7 +249,7 @@ body{
 .user{
     display: flex;
 }
-.user img, .user1{
+.user img, .user1, .shareUser{
     height: 50px;
     width: 50px;
     border-radius: 50%;
