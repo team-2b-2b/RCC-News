@@ -3,16 +3,16 @@
     width: 100%;
     height: 80px;
 } */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
 
-
+*{
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+}
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #e5e5e5ff;
-    background-color: #204051;
     border-radius: 10px;
 }
 
@@ -183,8 +183,8 @@ body{
     border: 1px solid;
     border-radius: 5px;
     box-shadow: 2px 2px 5px;
-    width: 70%;
-    margin: 0 0 3% 15%;
+    width: 90%;
+    margin: 0 0 3% 7%;
 }
 .container .news{
     display: flex;
@@ -222,9 +222,13 @@ body{
 }
 .buttons{
     width: 50%;
-    margin: -70px 340px;
+    margin: 0% .5% -10% .5%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
 }
 .buttons .readMore{
+    cursor: pointer;
     font-size: 20px;
     font-weight: normal;
     text-decoration: none;
@@ -234,15 +238,26 @@ body{
     color: #f5f5f5;
     height: 40px;
 }
+.buttons .readMore:hover{
+    background-color: #84a9ac;
+    color: #CCD5D6;
+}
 .buttons .readMore a{
     color: #f5f5f5;
     font-size: 20px;
     font-weight: normal;
     text-decoration: none;
 }
+.buttons .readMore a:hover{
+    background-color: #84a9ac;
+    color: #CCD5D6;
+}
 .form{
-    margin: -152px 130px;
-    margin-bottom: 50px;
+    /* margin: -152px 130px;
+    margin-bottom: 50px; */
+    position: absolute;
+    left: 25%;
+    top: -280%;
 }
 .hidden{
     display: none;
@@ -263,6 +278,42 @@ body{
     border-radius: 5px;
     width: 250px;
     line-height: 2;
+}
+.user2{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin: 28px 5px;
+}
+.logoutBar{
+    position: relative;
+    top: -10%;
+}
+.userNav ul li{
+    border-right: none;
+}
+.logoutButton{
+    position: absolute;
+    left: 28%;
+    background-color: #72999F;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 72px;
+    color: #f5f5f5;
+    font-size: 15px;
+    cursor: pointer;
+}
+.logoutButton:hover{
+    background-color: #3B6978;
+}
+.saidBarNav{
+    background-color: #72999F;
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    margin: 0 5%;
 }
 .commentBox{
     background-color: #f5f5f5;
@@ -300,7 +351,7 @@ article{
     display: flex;
 }
 .userInfo{
-    width: 100%;
+    width: 70%;
     height: 500px;
     border: 1px solid #204051;
     border-radius: 5px;

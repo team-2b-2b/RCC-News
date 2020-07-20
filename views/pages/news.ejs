@@ -49,13 +49,27 @@
         <article>
             <section class="userInfo">
                 <div class="basicInfo">
-                    <img src="<%= signin[1] %>" alt="" class="user1">
+                    <img src="<%= signin[1] %>" alt="" class="user2">
                     <h4><%= signin[0] %></h4>
                 </div>
-                
-                <form action="/signout" method="post"> 
-                    <input type="submit" id="signIn" value="Sign Out">
+
+                <form action="/signout" class="logoutBar" method="post">
+                    <input type="submit" id="signIn" class="logoutButton" value="Sign Out">
                 </form>
+                <div class="saidBarNav">
+                    <nav id="footerNav" class="userNav">
+                        <ul>
+                            <li><a href="/index">Home</a></li>
+                            <li><a href="/politics">Politics News</a></li>
+                            <li><a href="/sport">Sport News</a></li>
+                            <li><a href="/health">Health News</a></li>
+                            <li><a href="/tech">Technology News</a></li>
+                            <li><a href="/favourite">Read Later</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </section>
             <section id="allNews">
                 <% newsData.forEach ((item,ind) => { %>
@@ -87,15 +101,22 @@
                             <button class="readMore">Read Later</button>
                         </form>
 
-                        <form action="/share" class="form" method="post">
-                            <input class="hidden" style="display: none;" type="text" id="category" name="category" value="Sport News"><br>
-                            <input class="hidden" style="display: none;" type="text" id="urlToImage" name="urlToImage" value="<%= item.urlToImage %>"><br>
-                            <input class="hidden" style="display: none;" type="text" id="author" name="author" value="<%= item.author %>"><br>
-                            <input class="hidden" style="display: none;" type="text" id="title" name="title" value="<%= item.title %>"><br>
-                            <input class="hidden" style="display: none;" type="text" id="url" name="url" value="<%= item.url %>"><br>
-                            <input class="hidden" style="display: none;" type="text" id="publishedAt" name="publishedAt" value="<%= item.publishedAt %>"><br>
-                            <input class="hidden" style="display: none;" type="text" id="content" name="content" value="<%= item.content %>"><br>
-                            
+                        <form action="/share" class="form" method="post" style="margin-left: 25%;">
+                            <input class="hidden" style="display: none;" type="text" id="category" name="category"
+                                value="Sport News"><br>
+                            <input class="hidden" style="display: none;" type="text" id="urlToImage" name="urlToImage"
+                                value="<%= item.urlToImage %>"><br>
+                            <input class="hidden" style="display: none;" type="text" id="author" name="author"
+                                value="<%= item.author %>"><br>
+                            <input class="hidden" style="display: none;" type="text" id="title" name="title"
+                                value="<%= item.title %>"><br>
+                            <input class="hidden" style="display: none;" type="text" id="url" name="url"
+                                value="<%= item.url %>"><br>
+                            <input class="hidden" style="display: none;" type="text" id="publishedAt" name="publishedAt"
+                                value="<%= item.publishedAt %>"><br>
+                            <input class="hidden" style="display: none;" type="text" id="content" name="content"
+                                value="<%= item.content %>"><br>
+
                             <button class="readMore">Share</button>
                         </form>
                     </div>
@@ -105,20 +126,21 @@
                             <img src="img/user.JPG" alt="" class="user1">
 
                             <form action="/comments/<%= ind %>" class="addComment" method="post">
-                                <input  type="text" id="title" name="title" value="<%= item.title %>" style="display: none;" >
+                                <input type="text" id="title" name="title" value="<%= item.title %>"
+                                    style="display: none;">
                                 <input id="comment<%= ind%>" class="commentPlace" placeholder="Add your comment..."
                                     type="text" name="Ntext" size="20">
                                 <input type="submit" class="commentsButton" name="<%= ind%>" value="Comment">
                             </form>
 
                         </div>
-                        
+
                         <ul class="comments" id="<%= ind%>W">
 
                             <% results.forEach (item2 => { %>
 
-                                <% if(item2.title == item.title){ %>
-                                    <li class="user">
+                            <% if(item2.title == item.title){ %>
+                            <li class="user">
                                 <img src="<%=item2.userimg%>" alt="">
                                 <div class="userComment">
                                     <h3><%=item2.user_name%></h3>
