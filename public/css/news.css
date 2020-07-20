@@ -3,16 +3,16 @@
     width: 100%;
     height: 80px;
 } */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
 
-
+*{
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+}
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #e5e5e5ff;
-    background-color: #204051;
     border-radius: 10px;
 }
 
@@ -59,7 +59,13 @@ body{
 #header nav ul li a{
     color: #f5f5f5;
     font-size: 18px;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+    font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
+}
+#header nav ul li a:hover{
+    color: #CCD5D6;
 }
 #buttonSignOut{
     margin: 2% 0 0 2%;
@@ -80,12 +86,16 @@ body{
 .dropdown {
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }  
 .dropdown-content {
+    cursor: pointer;
     display: none;
+    font-size: 18px;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
     position: absolute;
     background-color: #f5f5f5;
-    width: 150px;
+    width: 180px;
     line-height: 3;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 10px;
@@ -94,13 +104,16 @@ body{
 .dropdown:hover .dropdown-content {
     display: block;
     margin: -15px 20px;
-    border-top: 5px solid #bed9dc;
+    border-top: 5px solid rgba(157, 2, 8, .85);
 }
 .dropdown-content a{
+    display: block;
     color: #3B6978;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+    font-weight: bold;
     text-decoration: none;
-    padding: 12px 10px;
-    width: 350px;
+    padding: 2px 5px;
+    width: 170px;
 } 
 .dropdown:hover .dropdown-content a:hover{
     /* display: block; */
@@ -170,8 +183,8 @@ body{
     border: 1px solid;
     border-radius: 5px;
     box-shadow: 2px 2px 5px;
-    width: 70%;
-    margin: 0 0 3% 15%;
+    width: 90%;
+    margin: 0 0 3% 7%;
 }
 .container .news{
     display: flex;
@@ -209,9 +222,13 @@ body{
 }
 .buttons{
     width: 50%;
-    margin: -70px 340px;
+    margin: 0% .5% -10% .5%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
 }
 .buttons .readMore{
+    cursor: pointer;
     font-size: 20px;
     font-weight: normal;
     text-decoration: none;
@@ -221,15 +238,26 @@ body{
     color: #f5f5f5;
     height: 40px;
 }
+.buttons .readMore:hover{
+    background-color: #84a9ac;
+    color: #CCD5D6;
+}
 .buttons .readMore a{
     color: #f5f5f5;
     font-size: 20px;
     font-weight: normal;
     text-decoration: none;
 }
+.buttons .readMore a:hover{
+    background-color: #84a9ac;
+    color: #CCD5D6;
+}
 .form{
-    margin: -152px 130px;
-    margin-bottom: 50px;
+    /* margin: -152px 130px;
+    margin-bottom: 50px; */
+    position: absolute;
+    left: 25%;
+    top: -280%;
 }
 .hidden{
     display: none;
@@ -250,6 +278,42 @@ body{
     border-radius: 5px;
     width: 250px;
     line-height: 2;
+}
+.user2{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin: 28px 5px;
+}
+.logoutBar{
+    position: relative;
+    top: -10%;
+}
+.userNav ul li{
+    border-right: none;
+}
+.logoutButton{
+    position: absolute;
+    left: 28%;
+    background-color: #72999F;
+    border: none;
+    border-radius: 5px;
+    height: 25px;
+    width: 72px;
+    color: #f5f5f5;
+    font-size: 15px;
+    cursor: pointer;
+}
+.logoutButton:hover{
+    background-color: #3B6978;
+}
+.saidBarNav{
+    background-color: #72999F;
+    border: none;
+    border-radius: 5px;
+    width: 90%;
+    margin: 0 5%;
 }
 .commentBox{
     background-color: #f5f5f5;
@@ -287,7 +351,7 @@ article{
     display: flex;
 }
 .userInfo{
-    width: 100%;
+    width: 70%;
     height: 500px;
     border: 1px solid #204051;
     border-radius: 5px;
@@ -335,30 +399,125 @@ footer{
     position: static;
     bottom: 0;
     width: 100%;
+    height: 300px;
+}
+
+#footer{
+    display: flex;
+    margin-top: 50px;
+    height: 0;
+}
+
+#logo1{
+    margin: -2% 2%;
+}
+
+#logo1 img{
     height: 200px;
+    width: 300px;
+    margin: 2% -15%;
+}
+
+#logo1 ul li{
+    display: block;
+    margin: -18% 5% 8%;
+}
+
+#logo1 ul li img{
+    margin: 5% 2% 5%;
+    height: 30px;
+    width: 30px;
+}
+
+#logo1 ul li p{
+    margin: -105% 110%;
+    text-align: left;
+    text-transform: lowercase;
+    width: 150px;
+}
+
+#logo1 .contact{
+    display: block;
+    border-radius: 50%;
+    margin: -15% 5% 22% 5%;
+    height: 30px;
+    width: 30px;
+}
+
+#footerNav{
+    margin: 2% 12%;
+}
+
+#footerNav ul li{
+    border-right: 1.5px solid #f5f5f5;
+    width: 250px;
+}
+
+#footerNav ul li a{
+    border-left: 2px solid rgba(157, 2, 8, .85);
+    padding: 0 10px;
+    color: #f5f5f5;
+    font-size: 20px;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    line-height: 2;
+}
+
+#footerNav ul li a:hover{
+    color: #CCD5D6;
+}
+
+#footerNav1{
+    margin: 2% 24%;
+}
+
+#footerNav1 ul li{
+    display: inline-block;
+}
+
+#footerNav1 ul li a{
+    color: #f5f5f5;
+    font-size: 20px;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    line-height: 2;
+}
+
+#footerNav1 ul li a:hover{
+    color: rgba(157, 2, 8, .85);
+}
+
+#footerNav1 ul li h2{
+    color: #f5f5f5;
+    font-size: 20px;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+}
+
+#footerNav1 ul li p{
+    color: rgba(157, 2, 8, .85);
+    font-size: 15px;
+    font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+    text-align: left;
+    text-transform: lowercase;
 }
 
 #footerIcons{
-float: right;
-margin: -6% 1% 0 0;
-
-
+    display: inline-block;
+    margin: 10.25% 5% 0 5%;
+    width: 25%;
 }
 
-#logo-footer{
-float: left;
-width: 5%;
-height: 5%;
-margin: 0 0 0 3%;
-
+#copy{
+    margin: 17% .5% 0 .5%;
 }
 
-#FooterTitle{
-font-size: 30px;
-display: inline-block;
-margin:0 0 0 1%;
-color: #f5f5f5;
-
+footer p {
+    color: #f5f5f5;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
 }
 
 #contact-us{
@@ -387,40 +546,40 @@ margin: 1% 0 0 9%;
 
 .fa {
     color: #f5f5f5;
-padding: 20px;
-font-size: 30px;
-width: 30px;
-text-align: center;
-text-decoration: none;
-margin: -12px -25px;
-border-radius: 50%;
-cursor: pointer;
+    padding: 10px;
+    font-size: 30px;
+    width: 4.5%;
+    text-align: center;
+    text-decoration: none;
+    margin: -12px 5px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .fa:hover {
-    color: #204051;
+    color: rgba(157, 2, 8, .85);
 }
 
 .fa-facebook {
-background: #3B5998;
-color: white;
+    background: #f5f5f5;
+    color: #204051;
 }
 
 .fa-twitter {
-background: #55ACEE;
-color: white;
+    background: #f5f5f5;
+    color: #204051;
 }
 .fa-linkedin {
-background: #007bb5;
-color: white;
+    background: #f5f5f5;
+    color: #204051;
 }
 
 .fa-youtube {
-background: #bb0000;
-color: white;
+    background: #f5f5f5;
+    color: #204051;
 }
 
 .fa-instagram {
-background: #125688;
-color: white;
+    background: #f5f5f5;
+    color: #204051;
 }
