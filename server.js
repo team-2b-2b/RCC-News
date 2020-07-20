@@ -264,7 +264,7 @@ function Sport(data) {
 // ----------------------------------------------------------------
 
 //----------------------------Wheather-----------------------------
-app.get('/', (request, response) => {
+app.get('/index', (request, response) => {
     // const city = request.query.city;
     let key = process.env.WEATHERBIT_KEY;
     let url = `https://api.weatherbit.io/v2.0/forecast/daily?city=amman&key=${key}`;
@@ -411,7 +411,7 @@ app.get('/dashboard', (req, res) => {
 });
 
 //--------------------------------------------------------------------------
-app.get('/welcome',(req,res)=>{
+app.get('/',(req,res)=>{
     res.render('welcome');
 })
 
