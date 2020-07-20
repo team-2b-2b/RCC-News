@@ -42,20 +42,23 @@
                 <input class="searchHome" type="text" placeholder="Search For Country News" required>
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
+            <form action="/signout" method="post" id='buttonSignOut'>
+                <input type="submit" id="signIn" value="Sign Out">
+            </form>
         </div>
     </header>
     <main>
-      
+
         <section class="sectionOneHome">
-            
+
             <div>
-               
+
                 <!-- <form action="/signup" method="post" id="buttonSignUp"> 
                     <input type="submit" id="signUP" value="Sign UP">
                 </form> -->
-                <form action="/signout" method="post" id='buttonSignOut'> 
+                <!-- <form action="/signout" method="post" id='buttonSignOut'> 
                     <input type="submit" id="signIn" value="Sign Out">
-                </form>
+                </form> -->
                 <!-- <form action="/signin" method="post" id='buttonSignIn'> 
                     <input type="submit" id="signIn" value="Sign In">
                 </form> -->
@@ -71,27 +74,32 @@
                     </li>
                     <li>
 
-                        <img src="<%= element.icon %>" alt=""> 
+                        <img src="<%= element.icon %>" alt="">
                     </li>
-                        <li>
-                        
-                            <%= element.hTemp %>
-                        </li>
-                        <li>
-                        
-                            <%= element.description %>
-                        </li>
+                    <li>
+
+                        <%= element.hTemp %>
+                    </li>
+                    <li>
+
+                        <%= element.description %>
+                    </li>
                     <% }) %>
                 </ul>
             </div>
             <div>
-                
+
             </div>
         </section>
         <section>
+            <div>
+                <img src="" alt="">
+            </div>
+        </section>
+        <!-- <section>
 
 
-            <!-- <h1>hello</h1> -->
+           
             
 
             <form action="/tosearch" method="post">
@@ -99,12 +107,12 @@
                 <button type="submit">Search</button>
 
             </form>
-        </section>
+        </section> -->
 
-     
+
 
     </main>
-   
+
 </body>
 
 </html>

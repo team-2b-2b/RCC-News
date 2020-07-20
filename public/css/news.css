@@ -60,6 +60,22 @@ body{
     font-size: 18px;
     text-decoration: none;
 }
+#buttonSignOut{
+    margin: 2% 0 0 2%;
+}
+#buttonSignOut input{
+    background-color: #84a9ac;
+    opacity: 0.7;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: block;
+    height: 25px;
+    width: 100px;
+}
+#buttonSignOut input:hover{
+    opacity: 1;
+
+}
 .dropdown {
     position: relative;
     display: inline-block;
