@@ -4,15 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/welcomeStyle.css">
+    <!-- <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/home.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <header>
+        <div id="header">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+                <!-- <h1>RCC</h1> -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <div class="dropdown">
+                        <li class="droplist"><a>Categories</a></li>
+                        <div class="dropdown-content">
+                            <a href="/news">Politics News</a>
+                            <a href="/sport">Sport News</a>
+                            <a href="/health">Health News</a>
+                            <a href="/tech">Technology News</a>
+
+                        </div>
+                    </div>
+                    <li><a href="">Read Later</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
     <main>
-        <form action="/signin" method="post"> 
-            <input type="submit" id="signIn" value="Sign In">
-        </form>
-        <form action="/signup" method="post"> 
-            <input type="submit" id="signUP" value="Sign UP">
-        </form>
+        <section>
+            <h2>Welcome To <strong>RCC NEWS</strong></h2>
+
+            <form action="/signin" method="post"> 
+                <input type="submit" id="signIn" value="Sign In">
+            </form>
+            <form action="/signup" method="post"> 
+                <input type="submit" id="signUP" value="Sign UP">
+            </form>
+
+        </section>
     </main>
 </body>
 </html>
