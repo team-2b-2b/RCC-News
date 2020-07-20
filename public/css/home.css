@@ -157,3 +157,47 @@ font-weight: 900;
     border-bottom: 1px solid gray;
     margin-bottom: 10%;
 }
+
+
+/*------------footer for home--------------*/
+.homefooter{
+    margin: 0;
+    height: 170px;
+    display: flex;
+}
+/* make the three div(s) inline*/
+.homefooter div:nth-child(n){
+    /* margin: 0;
+    height: 150px; */
+    width: 32%;
+    
+}
+/*1st div*/
+.homefooter div img {
+    width: 150px;
+    height:150px;
+}
+/* 2nd div*/
+.homefooter>div:nth-child(n)>div{
+    width: 100%;
+    margin-bottom: 2%;
+}
+.homefooter>div:nth-child(n)>div>*{
+    display: inline-block;
+}
+.homefooter>div:nth-child(2)>*{
+    display: block;
+}
+
+/* 3rd div */
+.homefooter div:nth-child(3)>*{
+    display: block;
+}
+.homefooter>div:nth-child(3)>i{
+    margin: 10% 0 10% 0;
+    /* margin-right: 10%; */
+    display: inline-block;
+}
+
+
+/*------------------------*/
