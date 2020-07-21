@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politics News</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/favourite.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+                <!-- <h1>RCC</h1> -->
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <div class="dropdown">
+                        <li class="droplist"><a>Categories</a></li>
+                        <div class="dropdown-content">
+                            <a href="">Jordan News</a>
+                            <a href="">Politics News</a>
+                            <a href="">Sport News</a>
+                            <a href="">Health News</a>
+                            <a href="">Technology News</a>
+                            <a href="">Fake News</a>
+                        </div>
+                    </div>
+                    <li><a href="">Read Later</a></li>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <form class="formSearch" action="/tosearch" method="post">
+                <input class="searchHome" type="text" placeholder="Search For Country News" required>
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <% if(results.length != 0){ %>
+            <div class="savedCounter">
+                <h2>You Saved <span class="savednum"><%= results.length %></span> Item</h2>
+            </div>
+    <% results.forEach(elem => { %>
+        <div class="container">
+            <h2><%= elem.category %></h2>
+            <div class="news">
+                <img src="<%= elem.urltoimage %>" alt="">
+                <div class="info">
+                    <h3><%= elem.title %></h3>
+                    <p class="date"><%= elem.publishedat %></p>
+                    <h4><%= elem.author %></h4>
+                    
+                    <p class="desc"><%= elem.content%></p>
+                    <button class="readMore"><a href="<%=elem.url%>">Read More</a></button>
+
+                </div>
+            </div>
+        </div>
+        <% }) %>
+      <% } %> 
+      
+      <% if (results.length == 0){ %>
+        <div class="container" id="emptyfav">
+        <h2>You didn't add any thing :( </h2>
+        </div>
+        <% } %>
+
+    </main>
+    <footer>
+        <div id="footer">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
