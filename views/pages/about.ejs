@@ -1,11 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/about.css">
+
 </head>
+
 <body>
-  <h1>hello</h1>
+  <header>
+    <div id="header">
+      <div id="logo">
+        <img src="img/logo1.png" alt="">
+        <!-- <h1>RCC</h1> -->
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/index">Home</a></li>
+          <div class="dropdown">
+            <li class="droplist"><a>Categories</a></li>
+            <div class="dropdown-content">
+              <a href="/news">Politics News</a>
+              <a href="/sport">Sport News</a>
+              <a href="/health">Health News</a>
+              <a href="/tech">Technology News</a>
+
+            </div>
+          </div>
+          <li><a href="/favorite">Read Later</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+      <form class="formSearch" action="/tosearch" method="post">
+        <input class="searchHome" type="text" name="search" placeholder="Search For Country News" required>
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </form>
+      <form action="/signout" method="post" id='buttonSignOut'>
+        <input type="submit" id="signIn" value="Sign Out">
+      </form>
+    </div>
+  </header>
+  <main>
+    <section class="mainSection">
+
+
+      <div>
+        <h1>RCC NEWS WEBSITE</h1>
+        <h3>Our Group Name: 2b|!2b</h3>
+      </div>
+
+
+      <section class="aboutImg">
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="/img/woman.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h1>Dana Abaddi</h1>
+              <p>Full stack developer & Communication Engineer</p>
+              <p>Gradutaed from : Princess Somaih Applied University</p>
+              <a href=""><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-github fa-4x" aria-hidden="true" ></i></a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="/img/woman.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h1>Basma Mohammed-Eid</h1>
+              <p>Full stack developer & IT</p>
+              <p>Gradutaed from : Saudi Electronic University</p>
+              <a href="https://www.linkedin.com/in/basma-mohammed-472aa3133/"><i class="fa fa-linkedin fa-4x"
+                  aria-hidden="true"></i></a>
+              <a href="https://github.com/Basma23"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="/img/person.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h1>Moh Nemrawi</h1>
+              <p>Full stack developer & Mechanical Engineer</p>
+              <p>Gradutaed from : JUST</p>
+
+
+              <a href=""><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="/img/person.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h1>Moh Ghafri</h1>
+              <p>Full stack developer & Electrical Engineer</p>
+              <p>Gradutaed from : Hashemite University HU</p>
+
+
+              <a href=""><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
+              <a href=""><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+
+
+  </main>
 </body>
+
 </html>
