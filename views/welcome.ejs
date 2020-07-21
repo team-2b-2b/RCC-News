@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/welcomeStyle.css">
+    <!-- <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/home.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <div id="logo">
+                <img src="img/logo1.png" alt="">
+                <!-- <h1>RCC</h1> -->
+            </div>
+            <!-- <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <div class="dropdown">
+                        <li class="droplist"><a>Categories</a></li>
+                        <div class="dropdown-content">
+                            <a href="/news">Politics News</a>
+                            <a href="/sport">Sport News</a>
+                            <a href="/health">Health News</a>
+                            <a href="/tech">Technology News</a>
+
+                        </div>
+                    </div>
+                    <li><a href="">Read Later</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav> -->
+            <form action="/signingin" method="post">
+
+                <p> <%= user %> </p>
+                <input id="comment" type="text" name="user_name" size="20" placeholder="User Name">
+
+
+                <input id="comment" type="text" name="password" size="20" placeholder="Password">
+                <input type="submit" value="Sign In">
+            </form>
+
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome To <strong>RCC NEWS</strong></h2>
+
+            <!-- <form action="/signingin"  method="post">
+                
+                <input id="comment" type="text" name="user_name" size="20" placeholder="User Name">
+    
+                
+                <input id="comment" type="text" name="password" size="20" placeholder="Password"> 
+                <p>  <%= user %> </p>
+                <input type="submit"  value="Sign In">
+            </form> -->
+
+
+            <form action="/signingup" method="post" class="signingup">
+
+                
+                <p> <%= name %> </p>
+                <input id="comment" type="text" name="user_name" size="20" placeholder="User Name">
+
+                
+                <input id="comment" type="text" name="password" size="20" placeholder="Password"> 
+                <label class="label">
+                    <input type="radio" name="gender" value="Male">
+                    <span>Male</span>
+                </label>
+
+                <label class="label">
+                    <input type="radio" name="gender" value="Female">
+                    <span>Female</span>
+                </label>
+
+                <input type="submit" value="Sign UP">
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
