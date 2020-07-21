@@ -7,6 +7,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -45,7 +46,7 @@
     <main>
         <div id="heroContainer">
             <div id="titleContainer">
-                <h1 id="title">Politics News</h1>
+                <h1 id="title">Dashboard</h1>
             </div>
         </div>
         <article>
@@ -76,10 +77,10 @@
             <section id="allNews">
                 <% results.forEach ((item,ind) => { %>
                 <div class="container">
-
-                    <img class="shareUser" src="<%=item.userimg %>" alt="">
-                    <h4><%= item.user_name %> shared this article</h4>
-
+                    <div class="whoShared">
+                        <img class="shareUser" src="<%=item.userimg %>" alt="">
+                        <h4><%= item.user_name %> shared this article</h4>
+                    </div>
                     <div class="news">
                         <img src="<%= item.urltoimage %>" alt="">
                         <div class="info">
