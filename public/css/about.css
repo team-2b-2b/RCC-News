@@ -56,6 +56,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding-bottom: 5%;
 }
 .mainSection{
   /* background-color: rgb(59,105,120,1); */
@@ -75,8 +76,9 @@ body {
 }
 .mainSection>div h3{
   font-family: 'Ranchers', cursive;
-  font-size: 24px;
+  font-size: 34px;
   padding-top: 2%;
+  color: #900d0d;
 }
   .flip-card{
     width: 22%;
@@ -97,21 +99,24 @@ body {
     background: radial-gradient(circle at bottom right, transparent 60px, #204051 60px);
   }
   .flip-card-back>*{
+    display: block;
     margin: 10% 0 5% 0;
   }
         .flip-card-back>h1{
           margin-top: 15%;
         }
+        .flip-card-back>a{
+          
+          display: inline-block;
+          width: 25%;
+          margin-top: 0;
+        }
 
-/* .flip-card-back i{
-  margin-top: 15%;
-} */
+
   /*---------------------*/
 
   .fa-linkedin{
-        /* background: transparent; */
-     /* color: none; */
-     /* padding: 0px; */
+     
      width: fit-content;
     
   }
@@ -120,4 +125,21 @@ body {
   }
   .fa:hover{
 color: turquoise;
+border-radius: 50%;
+  }
+  strong{
+    color: red;
+  }
+
+  strong {
+    animation: blinker 0.9s linear infinite;
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
   }
