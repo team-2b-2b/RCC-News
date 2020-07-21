@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/home.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <header>
@@ -48,12 +49,16 @@
     
                 <label for="">Password</label>
                 <input id="comment" type="text" name="password" size="20"> <br>
-    
+                <p>  <%= user %> </p>
                 <input type="submit"  value="Sign In">
             </form>
+            
+            
             <form action="/signingup" method="post" class="signingup">
+              
                 <label for="">Username</label>
                 <input id="comment" type="text" name="user_name" size="20"><br>
+                <p>  <%= name %> </p>
     
                 <label for="">Password</label>
                 <input id="comment" type="text" name="password" size="20"> <br>
@@ -61,6 +66,7 @@
                     <input type="radio" name="gender" value="Male">
                     <span>Male</span>
                 </label>
+                
                 <label class="label">
                     <input type="radio" name="gender" value="Female">
                     <span>Female</span>
@@ -70,6 +76,7 @@
             </form>
 
         </section>
+       
     </main>
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
