@@ -202,7 +202,12 @@ form label{
     display: block;
 }
 section form>*{
+    display: block;
     margin-bottom: 5%;
+}
+section form>p{
+    width: 100%;
+    color: red;
 }
 section form label>*{
     display: inline-block;
@@ -213,6 +218,7 @@ section form label>*{
 section form label span:hover{
     color: gray;
 }
+
 section form>input:last-child{
     border: 1px solid grey;
 }
