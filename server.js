@@ -51,7 +51,7 @@ app.get('/pages/news', (req, res) => {
 
 
 app.get('/', (req, res) => {
-    res.render('welcome');
+    res.render('welcome',{name:'' , user:''})
 })
 
 app.get('/news', (req, res) => {
@@ -309,8 +309,18 @@ app.post('/signingup', (req, res) => {
     let gender = req.body.gender;
     if (gender == 'Male') { userimg = `/img/person.png ` }
     if (gender == 'Female') { userimg = `/img/woman.png` }
+let SQL2 = 'SELECT * FROM  users WHERE user_name= $1;'
+let val2 = [user_name];
+client.query(SQL2,val2)
+.then(userResults => {
+    console.log(userResults.rows)
+if(userResults.rows.length != 0){
+  
+    res.render('welcome',{name:'this user is used', user : ''})
 
+}
 
+else{
     let SQL = 'INSERT INTO users (user_name,password,userimg) VALUES ($1,$2,$3);';
     let values = [user_name, password, userimg];
     client.query(SQL, values)
@@ -320,7 +330,8 @@ app.post('/signingup', (req, res) => {
             userArray.push(userimg);
             res.redirect('/index');
         })
-
+    }
+})
 })
 var userArray = [];
 
@@ -330,7 +341,7 @@ app.post('/signin', (req, res) => {
 
 app.post('/signingin', (req, res) => {
     userArray = [];
-    // user_name = req.body.user_name;
+    user_name = req.body.user_name;
     let password = req.body.password;
     // userimg =  results.rows.userimg;
     let SQL = 'SELECT * FROM  users WHERE user_name= $1 AND password=$2;';
@@ -338,6 +349,7 @@ app.post('/signingin', (req, res) => {
     client.query(SQL, values)
         .then(results => {
             if (results.rows) {
+                
                 user_name = results.rows[0].user_name;
                 userimg = results.rows[0].userimg;
                 userArray.push(user_name);
@@ -346,11 +358,10 @@ app.post('/signingin', (req, res) => {
                 console.log(results.rows[0].userimg);
                 res.redirect('/index');
             }
-            else {
-                console.log('here');
-                res.render('pages/signinpage');
-            }
 
+        })
+        .catch(()=>{
+            res.render('welcome',{name:'', user:'username or password is wrong '})
         })
 
 })
