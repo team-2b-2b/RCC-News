@@ -186,6 +186,15 @@ app.get('/favorite', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('pages/about');
 })
+
+app.delete('/deletefav',(req,res) => {
+    let SQL = `DELETE FROM favorite WHERE id=$1 AND user_name=$2;`;
+    let values = [req.body.id , user_name];
+    client.query(SQL,values)
+    .then (()=>{
+      res.redirect('/favorite');
+    })
+})
 // ----------------------------------------------------------------
 
 
