@@ -14,13 +14,18 @@ app.use(cors());
 const methodOverride = require('method-override');
 const { render } = require('ejs');
 app.use(methodOverride('_method'));
-
+const bodyParse = require("body-parser");
+const path = require("path");
+app.use(bodyParse.urlencoded({ extended: false }));
+// app.use(express.static(assets));
+const httpMsgs = require("http-msgs");
 
 
 ///////////////////////////////
 // install them in your terminal: 
 // npm init
 //npm i express cors dotenv superagent pg method-override
+// npm i body-parser path http-msgs
 //////////////////////////////
 
 
@@ -44,20 +49,9 @@ app.get('/pages/news', (req, res) => {
 //     res.render('index');
 // })
 
-app.post('/comments/:comnt_id', (req, res) => {
-    let postNum = req.params.comnt_id;
-    // console.log(postNum);
-    let SQL = `INSERT INTO comments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
-    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
-    client.query(SQL, values)
-        .then(() => {
-            // let SQL2 = `SELECT * FROM comments`
-            // client.query(SQL2)
-            //     .then(results => {
-            res.redirect('/news');
-            //     })
 
-        })
+app.get('/', (req, res) => {
+    res.render('welcome');
 })
 
 app.get('/news', (req, res) => {
@@ -75,7 +69,7 @@ app.get('/news', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/news', {results: results.rows});
-                    res.render('pages/news', { signin: userArray,newsData: newsArray, results: results.rows });
+                    res.render('pages/news', { signin: userArray, newsData: newsArray, results: results.rows });
                 })
 
         })
@@ -89,8 +83,9 @@ function News(data) {
 
     this.url = data.url;
     this.author = data.author;
-   
-    this.content =  data.content.slice(0, data.content.indexOf("["));
+
+    if (data.content) { this.content = data.content.slice(0, data.content.indexOf("[")); }
+    else { this.content = this.description; }
     this.publishedAt = data.publishedAt;
 }
 // ----------------------------------------------------------------
@@ -98,21 +93,7 @@ function News(data) {
 
 
 // ------------------------------------Basma-----------------------
-app.post('/hcomments/:comnth_id', (req, res) => {
-    let postNum = req.params.comnth_id;
-    // console.log(postNum);
-    let SQL = `INSERT INTO healthcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
-    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
-    client.query(SQL, values)
-        .then(() => {
-            // let SQL2 = `SELECT * FROM comments`
-            // client.query(SQL2)
-            //     .then(results => {
-            res.redirect('/health');
-            //     })
 
-        })
-})
 app.get('/health', (req, res) => {
     let health_API = process.env.health_API;
     let url = `http://newsapi.org/v2/top-headlines?category=health&country=us&apiKey=${health_API}`;
@@ -128,7 +109,7 @@ app.get('/health', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/health', {results: results.rows});
-                    res.render('pages/health', {signin: userArray, healthData: healthArray, results: results.rows });
+                    res.render('pages/health', { signin: userArray, healthData: healthArray, results: results.rows });
                 })
 
         })
@@ -140,7 +121,8 @@ function Health(data) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://www.phoneworld.com.pk/wp-content/uploads/2020/03/Digitization-health-sector-Pakistan.jpg`; }
     this.author = data.author;
-    this.content = data.content.slice(0, data.content.indexOf("["));
+    if (data.content) { this.content = data.content.slice(0, data.content.indexOf("[")); }
+    else { this.content = this.description; }
     this.publishedAt = data.publishedAt;
     this.url = data.url;
 }
@@ -149,21 +131,7 @@ function Health(data) {
 
 
 // ------------------------------------Nimrawi-----------------------
-app.post('/tcomments/:comntt_id', (req, res) => {
-    let postNum = req.params.comntt_id;
-    // console.log(postNum);
-    let SQL = `INSERT INTO techcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
-    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
-    client.query(SQL, values)
-        .then(() => {
-            // let SQL2 = `SELECT * FROM comments`
-            // client.query(SQL2)
-            //     .then(results => {
-            res.redirect('/tech');
-            //     })
 
-        })
-})
 app.get('/tech', (req, res) => {
     let Tech_API = process.env.Tech_API;
     let url = `http://newsapi.org/v2/top-headlines?category=technology&country=us&apiKey=${Tech_API}`;
@@ -179,7 +147,7 @@ app.get('/tech', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/tech', {results: results.rows});
-                    res.render('pages/tech', { signin: userArray,techData: techArray, results: results.rows });
+                    res.render('pages/tech', { signin: userArray, techData: techArray, results: results.rows });
                 })
 
         })
@@ -193,27 +161,29 @@ function Tech(data) {
 
     this.url = data.url;
     this.author = data.author;
-    this.content = data.content.slice(0, data.content.indexOf("["));
+    if (data.content) { this.content = data.content.slice(0, data.content.indexOf("[")); }
+    else { this.content = this.description; }
     this.publishedAt = data.publishedAt;
 }
 
 app.post('/addfavorite', (req, res) => {
     let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
-    let SQL = `INSERT INTO favorite (category, urlToImage, author, title, url, publishedAt, content) VALUES ($1,$2,$3,$4,$5,$6,$7);`;
-    let values = [category, urlToImage, author, title, url, publishedAt, content];
+    let SQL = `INSERT INTO favorite (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
+    let values = [user_name, userimg, category, urlToImage, author, title, url, publishedAt, content];
     client.query(SQL, values);
 });
 
 app.get('/favorite', (req, res) => {
-    let SQL = `SELECT * FROM favorite;`;
-    client.query(SQL)
+    let SQL = `SELECT * FROM favorite where user_name = $1 ;`;
+    let value = [user_name];
+    client.query(SQL,value)
         .then(results => {
-              // res.status(200).json(results.rows);
-              res.render('pages/favorite', {results: results.rows })
+            // res.status(200).json(results.rows);
+            res.render('pages/favorite', { results: results.rows })
         })
 });
 
-app.get('/about',(req,res)=>{
+app.get('/about', (req, res) => {
     res.render('pages/about');
 })
 // ----------------------------------------------------------------
@@ -221,21 +191,7 @@ app.get('/about',(req,res)=>{
 
 
 // ------------------------------------Ghafri-----------------------
-app.post('/scomments/:comnts_id', (req, res) => {
-    let postNum = req.params.comnts_id;
-    console.log(user_name);
-    let SQL = `INSERT INTO sportcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
-    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
-    client.query(SQL, values)
-        .then(() => {
-            // let SQL2 = `SELECT * FROM comments`
-            // client.query(SQL2)
-            //     .then(results => {
-            res.redirect('/sport');
-            //     })
 
-        })
-})
 app.get('/sport', (req, res) => {
     let sport_API = process.env.sport_API;
     let url = `http://newsapi.org/v2/top-headlines?category=sport&country=us&apiKey=${sport_API}`;
@@ -251,7 +207,7 @@ app.get('/sport', (req, res) => {
                 .then(results => {
                     // console.log(results.rows);
                     // res.render('pages/sport', {results: results.rows});
-                    res.render('pages/sport', { signin: userArray,sportData: sportArray, results: results.rows });
+                    res.render('pages/sport', { signin: userArray, sportData: sportArray, results: results.rows });
                 })
 
         })
@@ -263,7 +219,8 @@ function Sport(data) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR68KlBNlBfL6n8ujQTRzl6X0YBTIcmLhDXEQ&usqp=CAU`; }
     this.author = data.author;
-    this.content = data.content.slice(0, data.content.indexOf("["));
+    if (data.content) { this.content = data.content.slice(0, data.content.indexOf("[")); }
+    else { this.content = this.description; }
     this.publishedAt = data.publishedAt;
     this.url = data.url;
 }
@@ -299,21 +256,7 @@ function Weather(day) {
 
 //---------------------------------search-------------------------------
 
-app.post('/searchcomments/:comntsearch_id', (req, res) => {
-    let postNum = req.params.comntsearch_id;
-    console.log(user_name);
-    let SQL = `INSERT INTO searchcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
-    let values = [postNum, userimg, req.body.title, user_name, req.body.Ntext];
-    client.query(SQL, values)
-        .then(() => {
-            // let SQL2 = `SELECT * FROM comments`
-            // client.query(SQL2)
-            //     .then(results => {
-            res.redirect('/searches');
-            //     })
 
-        })
-})
 app.get('/searches', (req, res) => {
     res.render('pages/searches');
 })
@@ -333,7 +276,7 @@ app.post('/tosearch', (req, res) => {
             let SQL2 = `SELECT * FROM searchcomments;`;
             client.query(SQL2)
                 .then(results => {
-                  res.render('pages/searches', { signin: userArray, searchData: searchArray,results: results.rows });
+                    res.render('pages/searches', { signin: userArray, searchData: searchArray, results: results.rows });
                 })
 
         })
@@ -359,29 +302,34 @@ app.post('/signup', (req, res) => {
 })
 
 app.post('/signingup', (req, res) => {
-    let user_name = req.body.user_name;
+    userArray = [];
+
+     user_name = req.body.user_name;
     let password = req.body.password;
     let gender = req.body.gender;
-    if (gender == 'Male') {  userimg = `/img/person.png `}
-    if (gender == 'Female') {  userimg = `/img/woman.png` }
+    if (gender == 'Male') { userimg = `/img/person.png ` }
+    if (gender == 'Female') { userimg = `/img/woman.png` }
 
 
     let SQL = 'INSERT INTO users (user_name,password,userimg) VALUES ($1,$2,$3);';
     let values = [user_name, password, userimg];
     client.query(SQL, values)
         .then(results => {
-            res.redirect('/');
+          
+            userArray.push(req.body.user_name);
+            userArray.push(userimg);
+            res.redirect('/index');
         })
 
 })
-var userArray=[];
+var userArray = [];
 
 app.post('/signin', (req, res) => {
     res.render('pages/signinpage');
 })
 
 app.post('/signingin', (req, res) => {
-     userArray=[];
+    userArray = [];
     // user_name = req.body.user_name;
     let password = req.body.password;
     // userimg =  results.rows.userimg;
@@ -420,27 +368,128 @@ app.post('/signout', (req, res) => {
 app.post('/share', (req, res) => {
     let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
     let SQL = `INSERT INTO dashboard (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
-    let values = [user_name,userimg,category, urlToImage, author, title, url, publishedAt, content];
+    let values = [user_name, userimg, category, urlToImage, author, title, url, publishedAt, content];
     client.query(SQL, values)
-        .then(()=>{
+        .then(() => {
             res.redirect('/dashboard');
         })
-        
-    
+
+
 });
 
 app.get('/dashboard', (req, res) => {
     let SQL = `SELECT * FROM dashboard;`;
     client.query(SQL)
         .then(results => {
-            res.render('pages/dashboard', {signin: userArray, results: results.rows});
+            res.render('pages/dashboard', { signin: userArray, results: results.rows });
         })
 });
 
 //--------------------------------------------------------------------------
-app.get('/',(req,res)=>{
-    res.render('welcome');
+
+
+//-----------------------------------comments-----------------------------------
+
+app.post('/ncomments', (req, res) => {
+    let postNum = 0;
+
+    let SQL = `INSERT INTO comments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.text];
+    client.query(SQL, values)
+        .then(() => {
+            httpMsgs.sendJSON(req, res, {
+                userimg: userimg,
+                user_name: user_name,
+                comment: req.body.text
+
+            })
+
+        })
+
+
 })
+
+
+
+app.post('/scomments', (req, res) => {
+    let postNum = 0;
+
+    let SQL = `INSERT INTO sportcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.text];
+    client.query(SQL, values)
+        .then(() => {
+            httpMsgs.sendJSON(req, res, {
+                userimg: userimg,
+                user_name: user_name,
+                comment: req.body.text
+
+            })
+
+        })
+
+
+})
+
+
+
+
+
+app.post('/tcomments', (req, res) => {
+    let postNum = 0;
+
+    let SQL = `INSERT INTO techcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.text];
+    client.query(SQL, values)
+        .then(() => {
+            httpMsgs.sendJSON(req, res, {
+                userimg: userimg,
+                user_name: user_name,
+                comment: req.body.text
+
+            })
+
+        })
+
+
+})
+
+
+
+
+app.post('/hcomments', (req, res) => {
+    let postNum = 0;
+
+    let SQL = `INSERT INTO healthcomments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.text];
+    client.query(SQL, values)
+        .then(() => {
+            httpMsgs.sendJSON(req, res, {
+                userimg: userimg,
+                user_name: user_name,
+                comment: req.body.text
+
+            })
+
+        })
+
+
+})
+
+
+//--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get('*', notFound);
 

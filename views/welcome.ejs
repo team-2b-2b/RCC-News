@@ -42,14 +42,37 @@
         <section>
             <h2>Welcome To <strong>RCC NEWS</strong></h2>
 
-            <form action="/signin" method="post"> 
-                <input type="submit" id="signIn" value="Sign In">
+            <form action="/signingin"  method="post">
+                <label for="">Username</label>
+                <input id="comment" type="text" name="user_name" size="20"><br>
+    
+                <label for="">Password</label>
+                <input id="comment" type="text" name="password" size="20"> <br>
+    
+                <input type="submit"  value="Sign In">
             </form>
-            <form action="/signup" method="post"> 
-                <input type="submit" id="signUP" value="Sign UP">
+            <form action="/signingup" method="post" class="signingup">
+                <label for="">Username</label>
+                <input id="comment" type="text" name="user_name" size="20"><br>
+    
+                <label for="">Password</label>
+                <input id="comment" type="text" name="password" size="20"> <br>
+                <label class="label">
+                    <input type="radio" name="gender" value="Male">
+                    <span>Male</span>
+                </label>
+                <label class="label">
+                    <input type="radio" name="gender" value="Female">
+                    <span>Female</span>
+                </label><br>
+    
+                <input type="submit"  value="Sign UP">
             </form>
 
         </section>
     </main>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
