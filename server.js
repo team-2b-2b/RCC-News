@@ -427,7 +427,7 @@ app.get('/dashboard', (req, res) => {
     let SQL = `SELECT * FROM dashboard;`;
     client.query(SQL)
         .then(results => {
-            res.render('pages/dashboard', {results: results.rows});
+            res.render('pages/dashboard', {signin: userArray, results: results.rows});
         })
 });
 

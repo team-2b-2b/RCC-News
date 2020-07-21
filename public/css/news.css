@@ -131,7 +131,7 @@ body{
     border: none;
     border-radius: 5px;
     height: 25px;
-    width: 250px;
+    width: 73%;
 }
 .formSearch button{
     display: block;
@@ -166,8 +166,8 @@ body{
     font-weight: bolder;
     top: 30%;
     left: 40%;
-    margin: -260px 622px;
-    padding: 225px 0;
+    margin: -260px 0;
+    padding: 225px 596px;
     margin-bottom: 280px;
 }
 #hero{
@@ -351,7 +351,7 @@ article{
     display: flex;
 }
 .userInfo{
-    width: 70%;
+    width: 90%;
     height: 500px;
     border: 1px solid #204051;
     border-radius: 5px;
