@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RCC News</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/home.css">
@@ -18,11 +18,10 @@
         <div id="header">
             <div id="logo">
                 <img src="img/logo1.png" alt="">
-                <!-- <h1>RCC</h1> -->
             </div>
             <nav>
                 <ul>
-                    <li><a href="/index">Home</a></li>
+                    <li><a href="">Home</a></li>
                     <div class="dropdown">
                         <li class="droplist"><a>Categories</a></li>
                         <div class="dropdown-content">
@@ -33,13 +32,13 @@
 
                         </div>
                     </div>
-                    <li><a href="/favorite">Read Later</a></li>
+                    <li><a href="">Read Later</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/about">About</a></li>
+                    <li><a href="">About</a></li>
                 </ul>
             </nav>
             <form class="formSearch" action="/tosearch" method="post">
-                <input class="searchHome" type="text" name="search" placeholder="Search For Country News" required>
+                <input class="searchHome" type="text" name="search" placeholder="Search For Country News....." required>
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
             <form action="/signout" method="post" id='buttonSignOut'>
@@ -48,132 +47,109 @@
         </div>
     </header>
     <main>
-
-        <section class="sectionOneHome">
-
-            <div>
-
-                <!-- <form action="/signup" method="post" id="buttonSignUp"> 
-                    <input type="submit" id="signUP" value="Sign UP">
-                </form> -->
-                <!-- <form action="/signout" method="post" id='buttonSignOut'> 
-                    <input type="submit" id="signIn" value="Sign Out">
-                </form> -->
-                <!-- <form action="/signin" method="post" id='buttonSignIn'> 
-                    <input type="submit" id="signIn" value="Sign In">
-                </form> -->
+        <div id="heroContainer">
+            <div id="titleContainer">
+                <h1 id="title">RCC News</h1>
             </div>
-        </section>
-        <section class="sectionTwoHome">
-            <div class="homeDivForWeather">
-                <h2>Amman,Jordan</h2>
-                <ul>
-                    <% outpot.forEach(element =>{ %>
-                    <li>
-                        <%= element.time %>
-                    </li>
-                    <li>
-
-                        <img src="<%= element.icon %>" alt="">
-                    </li>
-                    <li>
-
-                        <%= element.hTemp %>
-                    </li>
-                    <li>
-
-                        <%= element.description %>
-                    </li>
-                    <% }) %>
-                </ul>
-            </div>
-            <div>
-                <div>
-                   
-
-                    <img src="https://i0.wp.com/www.jprarts.com/news/wp-content/uploads/2016/12/Politics.png?resize=480%2C194&ssl=1" alt="">
-                    <h2><a href="/news">Political News</a> </h2>
-                    <p>Checkout the latest Political News</p>
-                </div>
-
-                <div>
-
-                    <img src="https://image.freepik.com/free-vector/collection-people-doing-sport-silhouette_23-2147553215.jpg" alt="">
-                    <h2><a href="/sport">Sport News</a> </h2>
-                    <p>Checkout the latest Sport News</p>
+        </div>
+        <article>
+            <section class="userInfo">
+                <div class="basicInfo">
+                    <h4>Amman,Jordan</h4>
+                    <div class="saidBarNav">
+                        <nav class="userNav" id="weatherNav">
+                            <ul id="weatherList">
+                                <% outpot.forEach(element =>{ %>
+                                <li>
+                                    <h2><%= element.time %></h2>
+                                    <img src="<%= element.icon %>" alt="">
+                                    <p><%= element.hTemp %></p>
+                                    <p><%= element.description %></p>
+                                </li>
+                                <% }) %>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
                 <div>
-
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSKSmt-r-9-6GSfY6m1loHbLf3Ry1gzAmV6Hg&usqp=CAU" alt="">
-                    <h2><a href="/health">Health News</a> </h2>
-                    <p>Checkout the latest Health News</p>
+            </section>
+            <section id="allNews">
+                <div class="contents">
+                    <a href="/news">
+                        <div class="conts">
+                            <img src="/img/home1.JPG" class="cont">
+                            <div class="imgCover">
+                                <h2>Politics News</h2>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/sport">
+                        <div class="conts">
+                            <img src="/img/home2.JPG" class="cont">
+                            <div class="imgCover">
+                                <h2>Sport News</h2>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div>
-
-                    <img src="https://img.pngio.com/computer-laptop-technology-icon-34444-free-icons-and-png-technology-icon-png-626_626.png" alt="">
-                    <h2><a href="/tech">Technology News</a> </h2>
-                    <p>Checkout the latest Technology News</p>
+                <div class="contents">
+                    <a href="/news">
+                        <div class="conts">
+                            <img src="/img/home3.JPG" class="cont">
+                            <div class="imgCover">
+                                <h2>Health News</h2>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/sport">
+                        <div class="conts">
+                            <img src="/img/home4.JPG" class="cont">
+                            <div class="imgCover">
+                                <h2 style="width: 300px;">Technology News</h2>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-
-            </div>
-        </section>
-        <section>
-            <div>
-            </div>
-        </section>
-        <!-- <section>
-
-
-           
-            
-
-            <form action="/tosearch" method="post">
-                <input type="text" placeholder="Enter a title or author" name="search" id="bar"><br>
-                <button type="submit">Search</button>
-
-            </form>
-        </section> -->
-
-
-
+        </article>
     </main>
-
-    <!-- <footer class="homefooter">
-        
-            <div id="logo">
+    <footer>
+        <div id="footer">
+            <nav id="footerNav">
+                <ul>
+                    <li><a href="/news">Politics News</a></li>
+                    <li><a href="/sport">Sport News</a></li>
+                    <li><a href="/health">Health News</a></li>
+                    <li><a href="/tech">Technology News</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <nav id="logo1">
                 <img src="img/logo1.png" alt="">
+                <ul>
+                    <li class="contact">
+                        <img src="img/phone.png">
+                        <p>+9627770004567</p>
+                    </li>
+                    <li class="contact">
+                        <img src="img/email.png">
+                        <p>rcc2020@info.com</p>
+                    </li>
+                </ul>
+            </nav>
+            <div id='footerIcons'>
+                <a href="https://web.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://web.twitter.com/" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://web.youtube.com/" target="_blank" class="fa fa-youtube"></a>
+                <a href="https://web.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://web.linkedin.com/" target="_blank" class="fa fa-linkedin"></a>
+
             </div>
-            <div>
-                <div>
-
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <p>Amman, Jordan</p>
-                </div>
-                <div>
-
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <p>00962 0555555</p>
-                </div>
-                <div>
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <p>RCC_news@rcc.com</p>
-
-                </div>
-
-            </div>
-            <div>
-                <h2>
-                    About the RCC Website
-                </h2>
-                <p>lorem</p>
-                
-                <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-                <i class="fa fa-github" aria-hidden="true"></i>
-            </div>
-        
-    </footer> -->
+        </div>
+        <div id="copy">
+            <hr>
+            <p>RCC News &copy; 2020 &middot; All Copyrights are reserved</p>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="app.js"></script>
 
