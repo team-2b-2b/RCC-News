@@ -178,7 +178,7 @@ app.get('/favorite', (req, res) => {
     let value = [user_name];
     client.query(SQL,value)
         .then(results => {
-            // res.status(200).json(results.rows);
+            // res.status200).json(results.rows);
             res.render('pages/favorite', { results: results.rows })
         })
 });
