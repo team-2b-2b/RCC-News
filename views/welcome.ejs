@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="css/reset.css">
 
     <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/welcomeStyle.css">
-    <!-- <link rel="stylesheet" href="css/news.css">
-    <link rel="stylesheet" href="css/home.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -20,40 +19,49 @@
         <div id="header">
             <div id="logo">
                 <img src="img/logo1.png" alt="">
-                <!-- <h1>RCC</h1> -->
             </div>
-            <!-- <nav>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <div class="dropdown">
-                        <li class="droplist"><a>Categories</a></li>
-                        <div class="dropdown-content">
-                            <a href="/news">Politics News</a>
-                            <a href="/sport">Sport News</a>
-                            <a href="/health">Health News</a>
-                            <a href="/tech">Technology News</a>
-
-                        </div>
-                    </div>
-                    <li><a href="">Read Later</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="">About</a></li>
-                </ul>
-            </nav> -->
             <form action="/signingin" method="post">
 
                 <p> <%= user %> </p>
-                <input id="comment" type="text" name="user_name" size="20" placeholder="User Name">
+                <input id="comment" type="text" name="user_name" size="20" placeholder="User Name" class="login">
 
 
-                <input id="comment" type="text" name="password" size="20" placeholder="Password">
-                <input type="submit" value="Sign In">
+                <input id="comment" type="password" name="password" size="20" placeholder="Password" class="login">
+                <input type="submit" value="Sign In" class="loginButt">
             </form>
 
         </div>
     </header>
     <main>
         <section>
+            <div class="cover">
+                <aside>
+                    <h1>RCC</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam excepturi libero praesentium sit cupiditate vero. Cumque iusto dolores soluta ratione debitis dolorem dignissimos officiis ducimus, porro, odit, voluptate amet impedit.</p>
+                </aside>
+                <div class="signUp">
+                    <form action="/signingup" method="post" class="signingup">
+
+                
+                        <input id="comment" type="text" name="user_name" size="20" placeholder="User Name">
+                        <p> <%= name %> </p>
+        
+                        
+                        <input id="comment" type="text" name="password" size="20" placeholder="Password"> 
+                        <label class="label">
+                            <input type="radio" name="gender" value="Male">
+                            <span>Male</span>
+                        </label>
+        
+                        <label class="label">
+                            <input type="radio" name="gender" value="Female">
+                            <span>Female</span>
+                        </label>
+        
+                        <input type="submit" value="Sign UP">
+                    </form>
+                </div>
+            </div>
             <h2>Welcome To <strong>RCC NEWS</strong></h2>
 
             <!-- <form action="/signingin"  method="post">
@@ -91,6 +99,13 @@
         </section>
 
     </main>
+    <footer id="foot">
+        <div id="footer">
+               <img src="img/logo1.png" alt="">
+        <div id="copy">
+            <p>RCC News &copy; 2020 &middot; All Copyrights are reserved</p>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="app.js"></script>
