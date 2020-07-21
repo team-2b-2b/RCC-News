@@ -1,7 +1,7 @@
 {
   "name": "RCC-News",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hello, We are Dana Abbadi, Basma Eid, Mohammed Nimrawi and Mohammed Ghafri",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -29,5 +29,6 @@
     "path": "^0.12.7",
     "pg": "^8.3.0",
     "superagent": "^5.3.1"
-  }
+  },
+  "devDependencies": {}
 }
