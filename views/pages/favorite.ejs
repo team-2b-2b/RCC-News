@@ -46,10 +46,17 @@
         <% if(results.length != 0){ %>
             <div class="savedCounter">
                 <h2>You Saved <span class="savednum"><%= results.length %></span> Item</h2>
+
             </div>
     <% results.forEach(elem => { %>
         <div class="container">
+            <div class="categ-fav">
             <h2><%= elem.category %></h2>
+            <form class="delete-button" action="/deletefav?_method=delete" method="post">
+                <input class="hidden" type="text" name="id" value="<%= elem.id %>">
+                <button>X</button>
+            </form>
+        </div>
             <div class="news">
                 <img src="<%= elem.urltoimage %>" alt="">
                 <div class="info">
@@ -75,12 +82,42 @@
     </main>
     <footer>
         <div id="footer">
-            <div id="logo">
+            <nav id="footerNav">
+                <ul>
+                    <li><a href="/politics">Politics News</a></li>
+                    <li><a href="/sport">Sport News</a></li>
+                    <li><a href="/health">Health News</a></li>
+                    <li><a href="/tech">Technology News</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </nav>
+            <nav id="logo1">
                 <img src="img/logo1.png" alt="">
+                <ul>
+                    <li class="contact">
+                        <img src="img/phone.png">
+                        <p>+9627770004567</p>
+                    </li>
+                    <li class="contact">
+                        <img src="img/email.png">
+                        <p>rcc2020@info.com</p>
+                    </li>
+                </ul>
+            </nav>
+            <div id='footerIcons'>
+                <a href="https://web.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://web.twitter.com/" target="_blank" class="fa fa-twitter"></a>
+                <a href="https://web.youtube.com/" target="_blank" class="fa fa-youtube"></a>
+                <a href="https://web.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://web.linkedin.com/" target="_blank" class="fa fa-linkedin"></a>
+
             </div>
         </div>
+        <div id="copy">
+            <hr>
+            <p>RCC News &copy; 2020 &middot; All Copyrights are reserved</p>
+        </div>
     </footer>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="app.js"></script>
