@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health News</title>
-    <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/health.css">
+    <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -32,9 +32,9 @@
 
                         </div>
                     </div>
-                    <li><a href="/favourite">Read Later</a></li>
+                    <li><a href="/favorite">Read Later</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="">About</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>
             </nav>
             <form class="formSearch" action="/tosearch" method="post">
@@ -90,7 +90,7 @@
                         <button class="readMore"><a href="<%=item.url%>">Read More</a></button>
 
                         <form action="/addfavorite" method="post" class="form">
-                            <input class="hidden" type="text" id="category" name="category" value="Politics News"><br>
+                            <input class="hidden" type="text" id="category" name="category" value="Health News"><br>
                             <input class="hidden" type="text" id="urlToImage" name="urlToImage"
                                 value="<%= item.urlToImage %>"><br>
                             <input class="hidden" type="text" id="author" name="author" value="<%= item.author %>"><br>
@@ -121,9 +121,9 @@
                         <div class="newComments">
                             <img src="img/user.JPG" alt="" class="user1">
 
-                            <form action="/hcomments/<%= ind %>" class="addComment" method="post">
-                                <input  type="text" id="title" name="title" value="<%= item.title %>" style="display: none;" >
-                                <input id="comment<%= ind%>" class="commentPlace" placeholder="Add your comment..."
+                            <form class="addCommenthealth">
+                                <input  type="text" id="titleSend" name="title" value="<%= item.title %>" style="display: none;" >
+                                <input id="comment" class="commentPlace" name='search' placeholder="Add your comment..."
                                     type="text" name="Ntext" size="20">
                                 <input type="submit" class="commentsButton" name="<%= ind%>" value="Comment">
                             </form>
