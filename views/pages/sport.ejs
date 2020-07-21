@@ -32,13 +32,13 @@
 
                         </div>
                     </div>
-                    <li><a href="">Read Later</a></li>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">About</a></li>
+                    <li><a href="/favorite">Read Later</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/about">About</a></li>
                 </ul>
             </nav>
             <form class="formSearch" action="/tosearch" method="post">
-                <input class="searchHome" type="text" placeholder="Search For Country News" required>
+                <input class="searchHome" type="text" name='search' placeholder="Search For Country News" required>
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
         </div>
@@ -128,10 +128,10 @@
                         <div class="newComments">
                             <img src="img/user.JPG" alt="" class="user1">
 
-                            <form action="/scomments/<%= ind %>" class="addComment" method="post">
-                                <input type="text" id="title" name="title" value="<%= item.title %>"
+                            <form  class="addCommentsport" >
+                                <input type="text" id="titleSend" name="title" value="<%= item.title %>"
                                     style="display: none;">
-                                <input id="comment<%= ind%>" class="commentPlace" placeholder="Add your comment..."
+                                <input id="comment" class="commentPlace" placeholder="Add your comment..."
                                     type="text" name="Ntext" size="20">
                                 <input type="submit" class="commentsButton" name="<%= ind%>" value="Comment">
                             </form>
