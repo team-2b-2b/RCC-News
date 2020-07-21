@@ -1,0 +1,8 @@
+#heroContainer{
+    background-image: url(/img/health.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    margin: 260px 0;
+    margin-bottom: 80px;
+}

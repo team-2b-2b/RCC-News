@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politics News</title>
+    <title>Health News</title>
+    <link rel="stylesheet" href="css/health.css">
     <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,8 +32,8 @@
 
                         </div>
                     </div>
-                    <li><a href="">Read Later</a></li>
-                    <li><a href="">Dashboard</a></li>
+                    <li><a href="/favourite">Read Later</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                     <li><a href="">About</a></li>
                 </ul>
             </nav>
@@ -45,14 +46,32 @@
     <main>
         <div id="heroContainer">
             <div id="titleContainer">
-                <h1 id="title">Politics News</h1>
+                <h1 id="title">Health News</h1>
             </div>
         </div>
         <article>
             <section class="userInfo">
                 <div class="basicInfo">
-                    <img src="<%= signin[1] %>" alt="" class="user1">
+                    <img src="<%= signin[1] %>" alt="" class="user2">
                     <h4><%= signin[0] %></h4>
+                </div>
+
+                <form action="/signout" class="logoutBar" method="post">
+                    <input type="submit" id="signIn" class="logoutButton" value="Sign Out">
+                </form>
+                <div class="saidBarNav">
+                    <nav id="footerNav" class="userNav">
+                        <ul>
+                            <li><a href="/index">Home</a></li>
+                            <li><a href="/news">Politics News</a></li>
+                            <li><a href="/sport">Sport News</a></li>
+                            <li><a href="/health">Health News</a></li>
+                            <li><a href="/tech">Technology News</a></li>
+                            <li><a href="/favourite">Read Later</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="">About</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </section>
             <section id="allNews">
@@ -85,7 +104,7 @@
                             <button class="readMore">Read Later</button>
                         </form>
 
-                        <form action="/share" class="form" method="post">
+                        <form action="/share" class="form" method="post" style="margin-left: 25%;">
                             <input class="hidden" style="display: none;" type="text" id="category" name="category" value="Sport News"><br>
                             <input class="hidden" style="display: none;" type="text" id="urlToImage" name="urlToImage" value="<%= item.urlToImage %>"><br>
                             <input class="hidden" style="display: none;" type="text" id="author" name="author" value="<%= item.author %>"><br>
