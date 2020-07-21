@@ -89,7 +89,8 @@ function News(data) {
 
     this.url = data.url;
     this.author = data.author;
-    this.content = data.content;
+   
+    this.content =  data.content.slice(0, data.content.indexOf("["));
     this.publishedAt = data.publishedAt;
 }
 // ----------------------------------------------------------------
@@ -139,7 +140,7 @@ function Health(data) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://www.phoneworld.com.pk/wp-content/uploads/2020/03/Digitization-health-sector-Pakistan.jpg`; }
     this.author = data.author;
-    this.content = data.content;
+    this.content = data.content.slice(0, data.content.indexOf("["));
     this.publishedAt = data.publishedAt;
     this.url = data.url;
 }
@@ -192,7 +193,7 @@ function Tech(data) {
 
     this.url = data.url;
     this.author = data.author;
-    this.content = data.content;
+    this.content = data.content.slice(0, data.content.indexOf("["));
     this.publishedAt = data.publishedAt;
 }
 
@@ -207,9 +208,14 @@ app.get('/favorite', (req, res) => {
     let SQL = `SELECT * FROM favorite;`;
     client.query(SQL)
         .then(results => {
-            res.status(200).json(results.rows);
+              // res.status(200).json(results.rows);
+              res.render('pages/favorite', {results: results.rows })
         })
 });
+
+app.get('/about',(req,res)=>{
+    res.render('pages/about');
+})
 // ----------------------------------------------------------------
 
 
@@ -257,7 +263,7 @@ function Sport(data) {
         this.urlToImage = data.urlToImage;
     } else { this.urlToImage = `https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR68KlBNlBfL6n8ujQTRzl6X0YBTIcmLhDXEQ&usqp=CAU`; }
     this.author = data.author;
-    this.content = data.content;
+    this.content = data.content.slice(0, data.content.indexOf("["));
     this.publishedAt = data.publishedAt;
     this.url = data.url;
 }
