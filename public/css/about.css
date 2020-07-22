@@ -132,6 +132,14 @@ border-radius: 50%;
   strong{
     color: red;
   }
+  /* .fa-4x{
+    font-size: 25px;
+    height: 20px;
+    padding: 15%;
+    width: 30%;
+    margin-top: 2%;
+    text-align: center;
+  } */
 
   /* strong {
     animation: blinker 0.9s linear infinite;
