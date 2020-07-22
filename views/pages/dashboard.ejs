@@ -67,9 +67,9 @@
                             <li><a href="/sport">Sport News</a></li>
                             <li><a href="/health">Health News</a></li>
                             <li><a href="/tech">Technology News</a></li>
-                            <li><a href="/favourite">Read Later</a></li>
+                            <li><a href="/favorite">Read Later</a></li>
                             <li><a href="/dashboard">Dashboard</a></li>
-                            <li><a href="">About</a></li>
+                            <li><a href="/about">About</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -79,7 +79,8 @@
                 <div class="container">
                     <div class="whoShared">
                         <img class="shareUser" src="<%=item.userimg %>" alt="">
-                        <h4><%= item.user_name %> shared this article</h4>
+                        <h4><%= item.user_name %></h4>
+                        <p> shared this article</p>
                     </div>
                     <div class="news">
                         <img src="<%= item.urltoimage %>" alt="">

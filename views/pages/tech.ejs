@@ -7,6 +7,7 @@
     <title>Technology News</title>
     <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/tech.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -45,17 +46,32 @@
     <main>
         <div id="heroContainer">
             <div id="titleContainer">
-                <h1 id="title">Politics News</h1>
+                <h1 id="title">Technology News</h1>
             </div>
         </div>
         <article>
             <section class="userInfo">
                 <div class="basicInfo">
-                    <img src="<%= signin[1] %>" alt="" class="user1">
+                    <img src="<%= signin[1] %>" alt="" class="user2">
                     <h4><%= signin[0] %></h4>
-                    <form action="/signout" method="post"> 
-                        <input type="submit" id="signIn" value="Sign Out">
-                    </form>
+                </div>
+
+                <form action="/signout" class="logoutBar" method="post">
+                    <input type="submit" id="signIn" class="logoutButton" value="Sign Out">
+                </form>
+                <div class="saidBarNav">
+                    <nav id="footerNav" class="userNav">
+                        <ul>
+                            <li><a href="/index">Home</a></li>
+                            <li><a href="/news">Politics News</a></li>
+                            <li><a href="/sport">Sport News</a></li>
+                            <li><a href="/health">Health News</a></li>
+                            <li><a href="/tech">Technology News</a></li>
+                            <li><a href="/favorite">Read Later</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/about">About</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </section>
             <section id="allNews">
@@ -97,7 +113,7 @@
                             <input class="hidden" style="display: none;" type="text" id="publishedAt" name="publishedAt" value="<%= item.publishedAt %>"><br>
                             <input class="hidden" style="display: none;" type="text" id="content" name="content" value="<%= item.content %>"><br>
                             
-                            <button class="readMore">Share</button>
+                            <button class="readMore" style="margin-left: 197%;">Share</button>
                         </form>
                     </div>
                     <div class="commentBox">
