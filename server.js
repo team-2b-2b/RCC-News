@@ -179,7 +179,7 @@ app.get('/favorite', (req, res) => {
     client.query(SQL,value)
         .then(results => {
             // res.status200).json(results.rows);
-            res.render('pages/favorite', { results: results.rows })
+            res.render('pages/favorite', { results: results.rows , signin: userArray});
         })
 });
 
@@ -305,6 +305,9 @@ function Search(data) {
 
 //--------------------------users-----------------------------------------
 var user_name = 'RCC User';
+var first_name = 'RCC User';
+var last_name = 'RCC User';
+
 var userimg = '/img/person.png';
 app.post('/signup', (req, res) => {
     res.render('pages/signuppage');
@@ -314,6 +317,9 @@ app.post('/signingup', (req, res) => {
     userArray = [];
 
      user_name = req.body.user_name;
+    let email = req.body.email;
+     first_name = req.body.first_name;
+     last_name = req.body.last_name;
     let password = req.body.password;
     let gender = req.body.gender;
     if (gender == 'Male') { userimg = `/img/person.png ` }
@@ -325,17 +331,17 @@ client.query(SQL2,val2)
     console.log(userResults.rows)
 if(userResults.rows.length != 0){
   
-    res.render('welcome',{name:'this user is used', user : ''})
+    res.render('welcome',{name:'This username is used', user : ''})
 
 }
 
 else{
-    let SQL = 'INSERT INTO users (user_name,password,userimg) VALUES ($1,$2,$3);';
-    let values = [user_name, password, userimg];
+    let SQL = 'INSERT INTO users (user_name,password,userimg,email,first_name,last_name) VALUES ($1,$2,$3,$4,$5,$6);';
+    let values = [user_name, password, userimg,email,first_name,last_name];
     client.query(SQL, values)
         .then(results => {
-          
-            userArray.push(req.body.user_name);
+            userArray.push(first_name);
+            userArray.push(last_name);
             userArray.push(userimg);
             res.redirect('/index');
         })
@@ -350,21 +356,25 @@ app.post('/signin', (req, res) => {
 
 app.post('/signingin', (req, res) => {
     userArray = [];
-    user_name = req.body.user_name;
+    // user_name = req.body.user_name;
     let password = req.body.password;
+    // console.log(req.body.user_name);
+    // console.log(req.body.password);
+
     // userimg =  results.rows.userimg;
     let SQL = 'SELECT * FROM  users WHERE user_name= $1 AND password=$2;';
     let values = [req.body.user_name, password];
     client.query(SQL, values)
         .then(results => {
+            console.log(results.rows);
             if (results.rows) {
-                
-                user_name = results.rows[0].user_name;
+                console.log(results.rows[0].first_name);
+                first_name = results.rows[0].first_name;
+                last_name = results.rows[0].last_name;
                 userimg = results.rows[0].userimg;
-                userArray.push(user_name);
+                userArray.push(first_name);
+                userArray.push(last_name);
                 userArray.push(userimg);
-
-                console.log(results.rows[0].userimg);
                 res.redirect('/index');
             }
 
@@ -386,9 +396,10 @@ app.post('/signout', (req, res) => {
 
 
 app.post('/share', (req, res) => {
+    console.log(user_name);
     let { category, urlToImage, author, title, url, publishedAt, content } = req.body;
-    let SQL = `INSERT INTO dashboard (user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`;
-    let values = [user_name, userimg, category, urlToImage, author, title, url, publishedAt, content];
+    let SQL = `INSERT INTO dashboard (first_name, last_name,user_name,userimg,category, urltoimage, author, title, url, publishedat, content) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11);`;
+    let values = [first_name, last_name,user_name, userimg, category, urlToImage, author, title, url, publishedAt, content];
     client.query(SQL, values)
         .then(() => {
             res.redirect('/dashboard');
@@ -413,13 +424,13 @@ app.get('/dashboard', (req, res) => {
 app.post('/ncomments', (req, res) => {
     let postNum = 0;
 
-    let SQL = `INSERT INTO comments (post,userimg,title,user_name,comment) VALUES ($1,$2,$3,$4,$5);`;
-    let values = [postNum, userimg, req.body.title, user_name, req.body.text];
+    let SQL = `INSERT INTO comments (post,userimg,title,user_name,comment,first_name,last_name) VALUES ($1,$2,$3,$4,$5,$6,$7);`;
+    let values = [postNum, userimg, req.body.title, user_name, req.body.text,first_name,last_name];
     client.query(SQL, values)
         .then(() => {
             httpMsgs.sendJSON(req, res, {
                 userimg: userimg,
-                user_name: user_name,
+                user_name: `${first_name} ${last_name}`,
                 comment: req.body.text
 
             })
@@ -440,7 +451,7 @@ app.post('/scomments', (req, res) => {
         .then(() => {
             httpMsgs.sendJSON(req, res, {
                 userimg: userimg,
-                user_name: user_name,
+                user_name: `${first_name} ${last_name}`,
                 comment: req.body.text
 
             })
@@ -463,7 +474,7 @@ app.post('/tcomments', (req, res) => {
         .then(() => {
             httpMsgs.sendJSON(req, res, {
                 userimg: userimg,
-                user_name: user_name,
+                user_name: `${first_name} ${last_name}`,
                 comment: req.body.text
 
             })
@@ -485,7 +496,7 @@ app.post('/hcomments', (req, res) => {
         .then(() => {
             httpMsgs.sendJSON(req, res, {
                 userimg: userimg,
-                user_name: user_name,
+                user_name: `${first_name} ${last_name}`,
                 comment: req.body.text
 
             })
