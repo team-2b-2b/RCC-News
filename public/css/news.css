@@ -353,7 +353,7 @@ article{
     display: flex;
 }
 .userInfo{
-    width: 125%;
+    width: 90%;
     height: 500px;
     border: 1px solid #204051;
     border-radius: 5px;
