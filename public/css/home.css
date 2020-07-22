@@ -1,172 +1,5 @@
-@media screen and (max-width: 1920px){
-    #header nav ul {
-        float: right;
-        line-height: 5;
-        margin: 0 0 0 322px;
-    }
-    .formSearch {
-        margin: 4.5% 0 0 5%;
-    }
-    .formSearch input {
-        margin: -55px 98px 0;
-        margin-right: 5px;
-        display: block;
-        border: none;
-        border-radius: 5px;
-        height: 25px;
-        width: 73%;
-    }
-    .formSearch button {
-        display: block;
-        border: none;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: 50px;
-        height: 28.5px;
-        margin: -28px 330px;
-        margin-right: 0;
-        background-color: #3B6978;
-    }
-    #buttonSignOut input {
-        background-color: #204051;
-        border: none;
-        color: #f5f5f5;
-        cursor: pointer;
-        font-size: 88%;
-        font-weight: bold;
-        height: 25px;
-        margin: -4.5px -20% 0;
-        width: 100px;
-    }
-    .userInfo {
-        width: 28%;
-    }
-    .basicInfo{
-        margin: 0;
-    }
-    .basicInfo h4{
-        height: 25px;
-        margin: 8% 12.5%;
-    }
-    .saidBarNav{
-        margin: 20% -67.85% 0;
-        width: 95%;
-    }
-    #weatherList{
-        height: 395px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-    #weatherList li{
-        border-bottom: 2px solid rgba(157, 2, 8, .85);
-        margin: 2%;
-    }
-    #weatherList li h2{
-        color: #f5f5f5;
-        font-size: 20px;
-        text-align: center;
-        margin: 2% 0;
-    }
-    #weatherList li img{
-        margin: 0 32%;
-    }
-    #weatherList li p{
-        color: #f5f5f5;
-        font-size: 15px;
-        text-align: center;
-        margin-bottom: 2%;
-    }
-    #allNews {
-        width: 110%;
-    }
-    .container{
-        height: 242px;
-        width: 88%;
-    }
-    .container:hover{
-        box-shadow: 3px 3px 6px #204051;
-    }
-    .contents{
-        display: flex;
-        margin: 0 2%;
-    }
-    .conts{
-        width: 54%;
-    }
-    .info a{
-        color: #204051;
-        text-decoration: none;
-    }
-    .info h2{
-        font-size: 30px;
-        font-weight: bolder;
-        margin: 48% 10%;
-        width: 100%;
-    }
-     .cont{
-        border: 1px solid #204051;
-        border-radius: 5px;
-        box-shadow: 2px 2px 5px #204051;
-        height: 226.65px;
-        margin-bottom: 3%;
-        width: 184%;
-    }
-    /* .imgCover{
-        border-radius: 5px;
-        background-color: #204051;
-        opacity: .6;
-        height: 241.5px;
-        margin: -90% 0%;
-        margin-bottom: 3%;
-        width: 520px;
-        border: 1px solid #204051;
-    } */
-    .contents a{
-        text-decoration: none;
-        margin: 0 2% 1%;
-    }
-    .contents .cont:hover{
-        margin: 2% 5%;
-        width: 500px;
-    }
-    .imgCover h2{
-        color: #f5f5f5;
-        font-size: 35px;
-        font-weight: bolder;
-        margin: -42.5% 45% 40%;
-        text-align: center;
-        width: 250px;
-    }
-    .info .cont:hover{
-        width: 510px;
-    }
-    .imgCover h2:hover{
-        font-size: 30px;
-    }
-    .container .news .cont{
-        width: 50%;
-        margin: -2% 2%;
-        height: 205px;
-    }
-    footer{
-        padding: 0;
-    }
-    #copy {
-        margin: 13% .5% 0 .5%;
-    }
-    #logo1 {
-        margin: -2% 7%;
-    }
-    #footerIcons {
-        display: inline-block;
-        margin: 8.25% 5% 0 4%;
-        width: 25%;
-    }
-}
-@media screen and (max-width: 1536px){
 .searchHome {
     display: block;
-    /* padding: 1%; */
     line-height: 5px;
     margin: 0% 1% -20% 1%;
     height: 30px;
@@ -211,16 +44,6 @@
     border: 1px solid grey;
     border-radius: 7px;
 }
-
-/* .sectionOneHome div:nth-child(1) {
-    width: 100%;
-    background-image: url("/img/back for news.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 500px;
-    height: 500px;
-    display: grid;
-    grid-template-areas: 'formOne formOne formTwo formTwo''formThree formThree formThree formThree';
-} */
 #heroContainer{
     background-image: url(/img/searches.JPG);
     background-repeat: no-repeat;
@@ -308,16 +131,6 @@
     margin-bottom: 3%;
     width: 520px;
 }
-/* .imgCover{
-    border-radius: 5px;
-    background-color: #204051;
-    opacity: .6;
-    height: 241.5px;
-    margin: -90% 0%;
-    margin-bottom: 3%;
-    width: 520px;
-    border: 1px solid #204051;
-} */
 .contents a{
     text-decoration: none;
     margin: 0 2% 1%;
@@ -348,19 +161,6 @@
 footer{
     padding: 0;
 }
-/* .sectionOneHome div:nth-child(1) form:nth-child(1) input{
-    margin: 10%;
-} */
-
-/*-----For Section Two Home ----------*/
-
-/* .sectionTwoHome {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    background-color: #204051;
-    margin-top: 2%;
-} */
 
 .sectionTwoHome>div:first-child {
     background-color: #e4e3e3;
@@ -370,13 +170,6 @@ footer{
     overflow-x: scroll;
     margin: 0;
 }
-
-/* .sectionTwoHome>div:nth-child(2) {
-    background-color: #e4e3e3;
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-} */
 
 .sectionTwoHome>div:nth-child(2) div>img {
     grid-area: img;
@@ -441,5 +234,5 @@ font-weight: 900;
     border-bottom: 1px solid gray;
     margin-bottom: 10%;
 }
-}
+
 
