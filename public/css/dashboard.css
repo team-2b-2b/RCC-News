@@ -39,12 +39,12 @@ margin-top: 3.7%;
 
 .basicInfo h4 {
     color: #f5f5f5;
-    margin: 14% 1%;
+    margin: 10% 1%;
     font-size: 25px;
 }
 .logoutButton {
     position: absolute;
-    left: 32%;
+    left: 23%;
     background-color: #72999F;
     border: none;
     border-radius: 5px;
