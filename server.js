@@ -179,7 +179,7 @@ app.get('/favorite', (req, res) => {
     client.query(SQL,value)
         .then(results => {
             // res.status200).json(results.rows);
-            res.render('pages/favorite', { results: results.rows })
+            res.render('pages/favorite', { results: results.rows , signin: userArray});
         })
 });
 
