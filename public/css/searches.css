@@ -7,7 +7,7 @@
     margin-bottom: 80px;
 }
 .userInfo {
-    width: 60%;
+    width: 52%;
     height: 500px;
     border: 1px solid #204051;
     border-radius: 5px;
@@ -39,7 +39,7 @@
 }
 .buttons {
     width: 50%;
-    margin: -13% 0.25% 66px 46%;
+    margin: -12.8% 0.25% 66px 46%;
     display: flex;
     flex-direction: row;
     position: relative;
