@@ -15,33 +15,36 @@
 <body>
     <header>
         <div id="header">
-            <div id="logo">
-                <img src="img/logo1.png" alt="">
-                <!-- <h1>RCC</h1> -->
+            <div id="header">
+                <div id="logo">
+                    <img src="img/logo1.png" alt="">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <div class="dropdown">
+                            <li class="droplist"><a>Categories</a></li>
+                            <div class="dropdown-content">
+                                    <a href="/news">Politics News</a>
+                                    <a href="/sport">Sport News</a>
+                                    <a href="/health">Health News</a>
+                                    <a href="/tech">Technology News</a>
+        
+                                </div>
+                            </div>
+                            <li><a href="/favorite">Read Later</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/about">About</a></li>
+                    </ul>
+                </nav>
+                <form class="formSearch" action="/tosearch" method="post">
+                    <input class="searchHome" type="text" name="search" placeholder="Search For Country News....." required>
+                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+                <form action="/signout" method="post" id='buttonSignOut'>
+                    <input type="submit" id="signIn" value="Sign Out">
+                </form>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/index">Home</a></li>
-                    <div class="dropdown">
-                        <li class="droplist"><a>Categories</a></li>
-                        <div class="dropdown-content">
-                            <a href="/news">Politics News</a>
-                            <a href="/sport">Sport News</a>
-                            <a href="/health">Health News</a>
-                            <a href="/tech">Technology News</a>
-
-                        </div>
-                    </div>
-                    <li><a href="/favorite">Read Later</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/about">About</a></li>
-                </ul>
-            </nav>
-            <form class="formSearch" action="/tosearch" method="post">
-                <input class="searchHome" type="text" placeholder="Search For Country News" required>
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </form>
-        </div>
     </header>
     <main>
         <div id="heroContainer">
@@ -52,8 +55,8 @@
         <article>
             <section class="userInfo">
                 <div class="basicInfo">
-                    <img src="<%= signin[1] %>" alt="" class="user2">
-                    <h4><%= signin[0] %></h4>
+                    <img src="<%= signin[2] %>" alt="" class="user2">
+                    <h4><%= signin[0] %> <%= signin[1] %></h4>
                 </div>
 
                 <form action="/signout" class="logoutBar" method="post">
@@ -138,7 +141,7 @@
                                     <li class="user">
                                 <img src="<%=item2.userimg%>" alt="">
                                 <div class="userComment">
-                                    <h3><%=item2.user_name%></h3>
+                                    <h3><%=item2.first_name%> <%=item2.last_name%></h3>
                                     <p><%= item2.comment; %></p>
                                 </div>
                             </li>

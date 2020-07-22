@@ -6,7 +6,11 @@ CREATE TABLE comments(
     userimg VARCHAR (255),
     title VARCHAR (255),
     user_name VARCHAR (255),
-    comment Text
+    comment Text,
+    first_name VARCHAR (255),
+    last_name VARCHAR (255)
+
+
 );
 
 DROP TABLE IF EXISTS healthcomments;
@@ -16,8 +20,9 @@ CREATE TABLE healthcomments(
     userimg VARCHAR (255),
     title VARCHAR (255),
     user_name VARCHAR (255),
-    comment Text
-);
+    comment Text,
+    first_name VARCHAR (255),
+    last_name VARCHAR (255));
 
 DROP TABLE IF EXISTS sportcomments;
 CREATE TABLE sportcomments(
@@ -26,7 +31,9 @@ CREATE TABLE sportcomments(
     userimg VARCHAR (255),
     title VARCHAR (255),
     user_name VARCHAR (255),
-    comment Text
+    comment Text,
+    first_name VARCHAR (255),
+    last_name VARCHAR (255)
 );
 
 DROP TABLE IF EXISTS techcomments;
@@ -36,7 +43,9 @@ CREATE TABLE techcomments(
     userimg VARCHAR (255),
     title VARCHAR (255),
     user_name VARCHAR (255),
-    comment Text
+    comment Text,
+    first_name VARCHAR (255),
+    last_name VARCHAR (255)
 );
 
 DROP TABLE IF EXISTS favorite;
@@ -58,13 +67,19 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     user_name VARCHAR (255),
     password VARCHAR (255),
-    userimg VARCHAR (255)
+    userimg VARCHAR (255),
+    email VARCHAR (255),
+    first_name VARCHAR (255),
+    last_name VARCHAR (255)
+
 );
 
 
 DROP TABLE IF EXISTS dashboard;
 CREATE TABLE dashboard (
   id SERIAL PRIMARY KEY,
+  first_name VARCHAR (255),
+  last_name VARCHAR (255),
   user_name VARCHAR (255),
   userimg VARCHAR (255),
   category VARCHAR(255),
